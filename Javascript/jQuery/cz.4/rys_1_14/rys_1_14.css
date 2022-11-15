@@ -1,0 +1,19 @@
+#zew{
+    width: 80%;
+    height: 200px;
+    margin: auto;
+    margin-left: 150px !important;
+    background-color: #ccccff;
+    text-align: center;
+}
+
+#wew{
+    width: 60%;
+    height: 100px;
+    background-color: blue;
+    margin: 30px auto;
+}
+
+span{
+    font-size: 22px;
+}

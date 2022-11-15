@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+}
+body{
+    text-align: center;
+}
+
+#page{
+    border: 1px solid black;
+    width: 70%;
+    height: 200px;
+    margin-left: 250px;
+}
+
