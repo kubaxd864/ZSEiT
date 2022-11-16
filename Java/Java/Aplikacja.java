@@ -15,7 +15,9 @@ public class Aplikacja {
     // okno.setContentPane(new PanelPoleTekst2());
     // okno.setContentPane(new PanelPoleTekst3());
     // okno.setContentPane(new PanelObszarTekst());
-    okno.setContentPane(new PanelLista());
+    // okno.setContentPane(new PanelLista());
+    //okno.setContentPane(new PanelLista1());
+    okno.setContentPane(new PanelOpcja());
 
     okno.setBounds(100,50,300,150);
     okno.setVisible(true);
