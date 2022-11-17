@@ -1,5 +1,4 @@
 import java.awt.event.*;
-
 import javax.swing.*;
 
 public class PanelPasek extends JPanel {
