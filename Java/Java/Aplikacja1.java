@@ -8,7 +8,7 @@ public class Aplikacja1
         JFrame okno = new JFrame("Aplikacja");
         okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         okno.setLayout(new BorderLayout());
-        okno.add(new PasekNarzedzia(), BorderLayout.PAGE_START);
+        okno.add(/*new PasekNarzedzia(),*/ new PanelPasekStanu(), BorderLayout.PAGE_START);
 
         okno.setBounds(100, 50, 400, 200);
         okno.setVisible(true);
