@@ -57,4 +57,19 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/bg1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/bialy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Biały" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
