@@ -32,8 +32,8 @@ public class Aplikacja {
     // okno.setContentPane(new PanelSpringLayout());
     //okno.setContentPane(new ZdarzeniaAkcja());
     //okno.setContentPane(new ZdarzeniaKlawiatura());
-    //okno.setContentPane(new ZdarzeniaMysz());
-    okno.setContentPane(new PanelMenuKontekst());
+    okno.setContentPane(new ZdarzeniaMysz());
+    //okno.setContentPane(new PanelMenuKontekst());
 
 
 

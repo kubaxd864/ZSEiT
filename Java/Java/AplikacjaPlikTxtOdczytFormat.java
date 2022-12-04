@@ -32,7 +32,7 @@ public class AplikacjaPlikTxtOdczytFormat
             System.out.format("%s %4s %10s %10s%n", "Waluta", "Ile", "Sprzedaż", "Skup");
 
             for(Kantor ktr : kantor)
-                System.out.format("%-6S %4d %10.4f   %8.4f%n", ktr.waluta, ktr.liczba, ktr.sprzedaz, ktr.skup);
+                System.out.format("%-6S %4d %10.4f   %8.4f%n", ktr.waluta, ktr.liczba, ktr.kurssprzedaz, ktr.kursZakup);
         }
         catch (IOException ex)
         {

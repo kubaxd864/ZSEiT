@@ -13,7 +13,7 @@ public class AplikacjaPlikObiektOdczyt
             try
             {
                 kantor = (Kantor) czytelnik.readObject();
-                System.out.printf("%s %3d %2.4f %2.4f\n", kantor.waluta, kantor.liczba, kantor.kurssprzedaz, kantor.kurskupno);
+                System.out.printf("%s %3d %2.4f %2.4f\n", kantor.waluta, kantor.liczba, kantor.kurssprzedaz, kantor.kursZakup);
             }
             catch(EOFException e)
             {
