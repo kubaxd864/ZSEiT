@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="450px"
+            android:layout_height="125px"
+            android:layout_marginTop="30px"
+            android:layout_marginLeft="30px"
+            android:text="Pytanie 2"
+            android:layout_gravity="left"
+            android:textColor="@color/black"
+            android:textSize="100px" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="305dp"
+            android:layout_height="150px"
+            android:layout_marginTop="45px"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Podaj nazwę przedstawionego zabytku?"
+            android:textSize="60px" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25px"
+            android:src="@drawable/brama" />
+
+        <TextView
+            android:id="@+id/odpowiedzi"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_marginTop="20px"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Wybierz prawidłową odpowiedz:"
+            android:textSize="60px" />
+
+        <Button
+            android:id="@+id/katedra"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15px"
+            android:layout_gravity="center"
+            android:text="Katedra Notre Dame"
+            android:textColor="@color/black"
+            android:textSize="40px" />
+
+        <Button
+            android:id="@+id/palac"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15px"
+            android:layout_gravity="center"
+            android:text="Pałac Kultury"
+            android:textColor="@color/black"
+            android:textSize="50px" />
+
+        <Button
+            android:id="@+id/wieza"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15px"
+            android:layout_gravity="center"
+            android:text="Wieża Eifla"
+            android:textColor="@color/black"
+            android:textSize="50px" />
+
+        <Button
+            android:id="@+id/brama"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15px"
+            android:layout_gravity="center"
+            android:text="Brama Brandenburska"
+            android:textColor="@color/black"
+            android:textSize="40px" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
