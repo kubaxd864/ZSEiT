@@ -1,10 +1,6 @@
 PolishWords = ["Poziom dostępu", "Aktywa", "Upoważnienie", "Uwierzytelnienie", "Klikalność", "Zawartość", "Poufność", "Ładowanie danych"]
 EnglishWords = ["Access level", "Assets", "Authorization", "Authentication", "Click-through", "Content", "Confidentiality", "Data loading"]
 
-class Word:
-	def __init__(self,word):
-		self.word = word
-
 def menu():
 	a = str(input("Jaką tablicę chcesz wyświetlić Angielską czy Polską?"))
 	if a == "Polską" or a == "polską":
