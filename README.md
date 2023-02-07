@@ -1,2 +1,2 @@
-# ZSEiT
- Some schoole staff
+# All School Tasks 
+![school logo](ElektronikLogo.png)
