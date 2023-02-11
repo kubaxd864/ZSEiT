@@ -46,7 +46,6 @@ def run():
             print("Numer Twojego Konta:", account_number)
             print("Twój Numer PIN:", pin)
             bank.createAccount(account_number, pin)
-            bank.viewAccounts()
         elif(choice == 3):
             deposit_amount = int(input("Podaj Kwotę Wpłaty: "))
             selected_account.deposit(deposit_amount)
