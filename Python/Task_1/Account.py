@@ -1,5 +1,6 @@
 class BankAccount:
-    def __init__(self, accountNumber, balance):
+    def __init__(self, accountID, accountNumber, balance):
+        self.accountID = accountID
         self.accountNumber = accountNumber
         self.balance = balance
 
@@ -17,3 +18,9 @@ class BankAccount:
 
     def getAccountNumber(self):
         return self.accountNumber
+
+First_client_account = BankAccount(1, "1234 5678 9012 3453", 1500)
+Second_client_account = BankAccount(2,"0987 6543 2113 3456", 2000)
+Third_client_account = BankAccount(3, "1234 0990 3451 1231", 5500)
+Fourth_client_account = BankAccount(4, "6634 2321 0000 2322", 44000)
+Fifth_client_account = BankAccount(5, "0011 3242 4576 5533", 100)
