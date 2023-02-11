@@ -4,14 +4,15 @@ class Bank:
         self.accountsNumbers = []
         self.accountsPins = []
 
-    def createAccount(self, account):
+    def createAccount(self, account, pin):
         self.accountsNumbers.append(account)
+        self.accountsPins.append(pin)
 
-    def closeAccount(self, account):
+    def closeAccount(self, account, pin):
         self.accountsNumbers.remove(account)
+        self.accountsPins.remove(pin)
 
     def viewAccounts(self):
-        for account in self.accountsNumbers:
-            print(account.getAccountNumber())
+        print(self.accountsNumbers)
 
 bank = Bank("Good Bank")

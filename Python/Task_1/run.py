@@ -4,10 +4,10 @@ from Account import First_client_account, Second_client_account, Third_client_ac
 from Bank import bank
 
 def run():
-    bank.createAccount(First_client_account)
 
     print("Witaj w ", bank.name)
     Name = input("Podaj Imię i Nazwisko: ")
+    Pin = int(input("Podaj Numer PIN do Swojego Konta: "))
     if(Name ==  client1.name + " " + client1.surname):
         selected_client = client1
         selected_account = First_client_account
@@ -23,7 +23,7 @@ def run():
     elif(Name == client5.name + " " + client5.surname):
         selected_client = client5
         selected_account = Fifth_client_account
-    if(Name == Name == client1.name + " " + client1.surname or Name == client2.name + " " + client2.surname or Name == client3.name + " " + client3.surname or Name == client4.name + " " + client4.surname or Name == client5.name + " " + client5.surname):
+    if(Name == Name == client1.name + " " + client1.surname or Name == client2.name + " " + client2.surname or Name == client3.name + " " + client3.surname or Name == client4.name + " " + client4.surname or Name == client5.name + " " + client5.surname and Pin == selected_account.accountPin):
         print("Witaj", Name)
         print("Dostępne Operacje:")
         print("1. Dane Klienta")
@@ -45,6 +45,8 @@ def run():
             account_number = str(first_part) + " " + str(second_part) + " " + str(third_part) + " " + str(fourth_part)
             print("Numer Twojego Konta:", account_number)
             print("Twój Numer PIN:", pin)
+            bank.createAccount(account_number, pin)
+            bank.viewAccounts()
         elif(choice == 3):
             deposit_amount = int(input("Podaj Kwotę Wpłaty: "))
             selected_account.deposit(deposit_amount)
