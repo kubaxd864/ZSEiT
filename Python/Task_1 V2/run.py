@@ -6,7 +6,6 @@ def run():
     global Name, Pin, selected_client, selected_account
     print("Witaj w ", bank.name)
     Name = input("Podaj Imię i Nazwisko: ")
-    Pin = int(input("Podaj Numer PIN do Swojego Konta: "))
     if(Name ==  client1.name + " " + client1.surname):
         selected_client = client1
         selected_account = First_client_account
@@ -28,17 +27,24 @@ def run():
         selected_account = Fifth_client_account
         menu()
 
+def push():
+    client1.PushClients()
+    First_client_account.PushAccounts()
+
 def menu():
-    if(Name == Name == client1.name + " " + client1.surname or Name == client2.name + " " + client2.surname or Name == client3.name + " " + client3.surname or Name == client4.name + " " + client4.surname or Name == client5.name + " " + client5.surname and Pin == selected_account.accountPin):
+    if(Name == Name == client1.name + " " + client1.surname or Name == client2.name + " " + client2.surname or Name == client3.name + " " + client3.surname or Name == client4.name + " " + client4.surname or Name == client5.name + " " + client5.surname):
         global choice
         print("Witaj", Name)
         print("Dostępne Operacje:")
         print("1. Dane Klienta")
-        print("2. Stwórz Konto")
-        print("3. Wpłata")
-        print("4. Wypłata")
-        print("5. Sprawdź Saldo")
-        print("6. Wyjście")
+        print("2. Dodaj Klienta")
+        print("3. Stwórz Konto")
+        print("4. Wpłata")
+        print("5. Wypłata")
+        print("6. Sprawdź Saldo")
+        print("7. Lista Wszystkich Klientów w Bazie")
+        print("8. Lista Wszystkich Kont w Bazie")
+        print("9. Wyjście")
         choice = int(input("Podaj Numer Operacji: "))
         make_choice()
     else:
@@ -59,24 +65,31 @@ def make_choice():
             print(selected_client.Person_info())
             second_menu()
         elif(choice == 2):
-            First_client_account.PushAccounts()
-            First_client_account.CloseAccount()
-            First_client_account.ViewAccounts()
+            selected_client.AddClient()
             second_menu()
         elif(choice == 3):
+            selected_account.CreateAccount()
+            second_menu()
+        elif(choice == 4):
             deposit_amount = int(input("\nPodaj Kwotę Wpłaty: "))
             selected_account.deposit(deposit_amount)
             print("Aktualnie Dostępne Środki:", selected_account.checkBalance())
             second_menu()
-        elif(choice == 4):
+        elif(choice == 5):
             withdraw_amount = int(input("\nPodaj Kwotę Wypłaty: "))
             selected_account.withdraw(withdraw_amount)
             print("Dalej Dostępne Środki:", selected_account.checkBalance())
             second_menu()
-        elif(choice == 5):
+        elif(choice == 6):
             print("\nDostępne Środki na Koncie:", selected_account.checkBalance())
             second_menu()
-        elif(choice == 6):
+        elif(choice == 7):
+            selected_client.ViewClients()
+            second_menu()
+        elif(choice == 8):
+            selected_account.ViewAccounts()
+            second_menu()
+        elif(choice == 9):
             print("Wyjście")
         else:
             print("Niepoprawny Numer Operacji")
@@ -85,12 +98,16 @@ def second_menu():
     global choice
     print("\nWybierz Następną Operację:")
     print("1. Dane Klienta")
-    print("2. Stwórz Konto")
-    print("3. Wpłata")
-    print("4. Wypłata")
-    print("5. Sprawdź Saldo")
-    print("6. Wyjście")
+    print("2. Dodaj Klienta")
+    print("3. Stwórz Konto")
+    print("4. Wpłata")
+    print("5. Wypłata")
+    print("6. Sprawdź Saldo")
+    print("7. Lista Wszystkich Klientów w Bazie")
+    print("8. Lista Wszystkich Kont w Bazie")
+    print("9. Wyjście")
     choice = int(input("Podaj Numer Operacji: "))
     make_choice()
-
+    
+push()
 run()

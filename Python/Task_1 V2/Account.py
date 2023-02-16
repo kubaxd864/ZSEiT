@@ -41,9 +41,9 @@ class BankAccount:
         AccountNumberToDelete = input("Podaj Numer Konta Do Które Chcesz Usunąć: ")
         PinToAccountToDelete = input("Podaj Kod PIN Do Które Chcesz Usunąć: ")
         for s in self.Accounts:
-            if s.accountNumber == AccountNumberToDelete and s.accountPin == PinToAccountToDelete:
+            if(s.accountNumber == AccountNumberToDelete and s.accountPin == PinToAccountToDelete):
                 self.Accounts.remove(s)
-                print("Konto Usunięte!")
+                print("Konto Nr " + AccountNumberToDelete +" Usunięte!")
             else:
                 print("Nie ma takiego Konta w Bazie !")
 

@@ -11,33 +11,29 @@ class Client(Person):
     
     def ViewClients(self):
         print("Lista Klientów:")
-        for i in self.Clients:
-            print(i.name, i.surname)
-
+        for x in self.Clients:
+            print(x.name + " " + x.surname)
+    
     def AddClient(self):
-        id = len(self.Clients) + 1
-        name = input("Podaj Imię nowegp Klienta: ")
+        self.id = len(self.Clients) + 1
+        name = input("Podaj Imię nowego Klienta: ")
         surname = input("Podaj Nazwisko nowego Klienta: ")
         gender = input("Podaj Płeć nowego Klienta: ")
         age = int(input("Podaj Wiek nowego Klienta: "))
         phonenumber = input("Podaj Numer Telefonu nowego Klienta: ")
         address = input("Podaj Adres Zamieszkania nowego Klienta: ")
-        client = Client(id, name, surname, gender, age, phonenumber, address)
+        client = Client(self.id, name, surname, gender, age, phonenumber, address)
         self.Clients.append(client)
     
     def DeleteClient(self):
         ClientToDelete = input("Podaj Imię i Nazwisko Klienta do Usunięcia: ")
-        for i in self.Clients:
-            if i.name + " " + i.surname == ClientToDelete:
-                self.Clients.remove(i)
-                print("Klient Usunięty!")
+        for client in self.Clients:
+            if(client.name + " " + client.surname == ClientToDelete):
+                self.Clients.remove(client)
+                print("Klient " + ClientToDelete + " Został Usunięty")
+                break
             else:
-                print("Nie ma takiego Klienta w Bazie !")
-    
-    def ViewAccounts(self):
-        print("Lista Klientów:")
-        for i in self.Accounts:
-            print(i.accountNumber, i.accountPin)
+                print("Brak Takiego Klienta w Bazie")
 
 client1 = Client(1, "Jacek", "Łoś", "M", 25, "355456789", "ul. Miodowa 12")
 client2 = Client(2, "Anna", "Kowalska", "F", 23, "355234689", "ul. Malińska 28")
