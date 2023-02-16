@@ -1,3 +1,12 @@
+# Inicjalizacja klasy Bank
+#
+# Klasa przechowuje informacje o numerach kont w banku i pinach do tych kont
+# Klasa posiada metody:
+# - createAccount - tworzy nowe konto w banku
+# - closeAccount - usuwa konto z banku
+# - viewAccounts - wyświetla wszystkie konta w banku
+#
+
 class Bank:
     def __init__(self, name):
         self.name = name

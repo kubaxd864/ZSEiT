@@ -1,3 +1,8 @@
+# Inicjalizacja klasy Client
+#
+# Klasa przechowuje informacje o numerze klienta, imieniu, nazwisku, płci, wieku, numerze telefonu i adresie
+
+
 from Person import Person
 
 class Client(Person):

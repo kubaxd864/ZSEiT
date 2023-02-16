@@ -1,3 +1,17 @@
+# Inicjalizacja klasy BankAccount
+#
+# Klasa przechowuje informacje o numerze konta, pinie do konta i saldzie na koncie
+# Klasa posiada metody:
+# - deposit - wpłata środków na konto
+# - withdraw - wypłata środków z konta
+# - checkBalance - sprawdzenie salda na koncie
+# - getAccountNumber - zwraca numer konta
+#
+
+
+
+
+
 class BankAccount:
     def __init__(self, accountID, accountNumber, accountPin, balance):
         self.accountID = accountID
