@@ -1,3 +1,10 @@
+# Inicjalizacja klasy Person
+#
+# Klasa przechowuje informacje o imieniu, nazwisku, wieku, płci, numerze telefonu i adresie zamieszkania
+# Klasa posiada metodę:
+# - Person_info - wyświetla informacje o osobie
+#
+
 class Person:
     def __init__(self, name, surname, gender, age, phonenumber, address):
         self.name = name

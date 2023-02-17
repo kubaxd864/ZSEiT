@@ -1,7 +1,7 @@
 # Inicjalizacja klasy Run
 #
 # Importuje klasy oraz zmienne z plików Client.py, Account.py i Bank.py
-# Klasa Run posiada metody:
+# Klasa Run posiada funkcje:
 # - run - uruchamia program
 # - menu - wyświetla menu programu
 # - second_menu - wyświetla menu po wykonaniu operacji
@@ -12,7 +12,6 @@
 # - selected_client - przechowuje wybranego klienta
 # - selected_account - przechowuje wybrane konto klienta
 #
-# Klasa Run posiada funkcje:
 
 
 from random import randint

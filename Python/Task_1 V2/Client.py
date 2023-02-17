@@ -1,3 +1,14 @@
+# Inicjalizacja Klasy Client
+#
+# Klasa dziedziczy po klasie Person informacje o imieniu, nazwisku, płci, wieku, numerze telefonu i adresie zamieszkania klienta 
+# i przypisuje do nich ID klienta
+# Klasa posiada metody:
+# - PushClients - dodaje klientów do bazy
+# - ViewClients - wyświetla listę klientów w bazie
+# - AddClient - dodaje nowego klienta do bazy
+# - DeleteClient - usuwa wybranego klienta z bazy
+#
+
 from Person import Person
 
 class Client(Person):

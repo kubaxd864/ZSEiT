@@ -1,3 +1,17 @@
+# Inicjalizacja klasy BankAccount
+# 
+# Klasa przechowuje informacje o numerze konta, pinie do konta i saldzie na koncie
+# Klasa posiada metody:
+# - deposit - wpłata środków na konto
+# - withdraw - wypłata środków z konta
+# - checkBalance - sprawdzenie salda na koncie
+# - PushAccounts - dodaje konta do bazy
+# - ViewAccounts - zwraca numery wszystkich kont w bazie
+# - CreateAccount - tworzy nowe konto i dodaje je do bazy
+# - CloseAccount - usuwa wybrane konto z bazy
+#
+
+
 from random import randint
 
 class BankAccount:
