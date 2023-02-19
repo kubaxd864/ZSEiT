@@ -1,0 +1,47 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  margin-top: 100px;
+  text-align: center;
+  border-radius: 20px;
+  width: 600px;
+  height: 650px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.3px);
+  -webkit-backdrop-filter: blur(3.3px);
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+input{
+  border-radius: 16px;
+  width: 200px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid black
+}
+
+input::placeholder{
+  padding: 10px;
+  color: black;
+}
+
+input:focus{
+  outline: none;
+}
+
+.location, .temp, .feels, .desciption, .sunrise, .sunset, .wind{
+  margin-top: -10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.location h1, .temp h1, .feels h1, .desciption h1, .sunrise h1, .sunset h1, .wind h1{
+  margin-right: 10px;
+}
