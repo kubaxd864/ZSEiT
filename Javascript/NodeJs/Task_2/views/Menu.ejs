@@ -1,15 +1,36 @@
-<div class="Menu">
-    <p class="Menu-Title">Witaj + "Imie"</p>
-    <form>
-        <input type="text" name="name" placeholder="Wybierz Opcję z Menu"><br>
-        <input type="submit" value="Wybierz">
-    </form>
-    <p class="Menu-Option">1. Wyświetl Dane</p>
-    <p class="Menu-Option">2. Dodaj Nowe Konto</p>
-    <p class="Menu-Option">3. Wpłata Środków</p>
-    <p class="Menu-Option">4. Wypłata Środków</p>
-    <p class="Menu-Option">5. Sprawdź Saldo</p>
-    <p class="Menu-Option">6. Wyświetl Listę Klientów z Bazy</p>
-    <p class="Menu-Option">7. Wyśwtetl Listę Kont Klienta</p>
-    <p class="Menu-Option">8. Wyjście</p>
-</div>
+<html>
+<head>
+    <title>Bank</title>
+    <link rel="stylesheet" href="css/bank.css"/>
+    <link rel="shortcut icon" href="images/Bank_Logo.png"/>
+</head>
+<body>
+    <div class="App-header">
+        <img src="images/Bank_Logo.png" class="App-logo" alt="logo" />
+        <h2>Good Bank</h2>
+    </div>
+    <div class="App" id="App">
+        <div class="Menu">
+            <p class="Menu-Title">Witaj <%= Name %></p>
+            <p class="description">Wybierz Opcję z Podanych Poniżej</p>
+            <form action="/menu" method="post" class="menu-form">
+                <div class="option">
+                    <input type="text" name="choice" placeholder="Wybierz Opcję z Menu"><br>
+                    <input type="submit" value="Wybierz">
+                </div>
+                <p class="Amount">Kwota Wpłaty lub Wypłaty</p>
+                <input type="text" class="Amount" name="amount" placeholder="Podaj Kwotę"><br>
+            </form>
+            <p class="menu-errors"><%= Error %></p>
+            <p class="Menu-Option">1. Wyświetl Dane</p>
+            <p class="Menu-Option">2. Dodaj Nowe Konto</p>
+            <p class="Menu-Option">3. Wpłata</p>
+            <p class="Menu-Option">4. Wypłata</p>
+            <p class="Menu-Option">5. Sprawdź Saldo</p>
+            <p class="Menu-Option">6. Lista Klientów</p>
+            <p class="Menu-Option">7. Lista Kont Klienta</p>
+            <p class="Menu-Option">8. Wyloguj</p>
+        </div>
+    </div>
+</body>
+</html>

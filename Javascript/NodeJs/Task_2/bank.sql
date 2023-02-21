@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 20 Lut 2023, 21:40
+-- Czas generowania: 21 Lut 2023, 21:37
 -- Wersja serwera: 10.4.25-MariaDB
 -- Wersja PHP: 8.1.10
 
@@ -40,13 +40,15 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`AccountID`, `AccountOwnerID`, `AccountNumber`, `AccountPin`, `Balance`) VALUES
-(1, 1, 1234567890123453, 1234, 1500),
+(1, 1, 1234567890123453, 1234, 1180400),
 (2, 2, 9876543211334561, 3342, 2000),
 (3, 3, 1234099034511231, 2137, 5500),
 (4, 4, 6634232100002322, 7012, 44000),
 (5, 5, 1132424576553300, 5561, 100),
 (6, 6, 1232434576543345, 4110, 100000),
-(7, 7, 1234507893323053, 6712, 7250);
+(7, 7, 1234507893323053, 6712, 7250),
+(8, 1, 5876240472071433, 1390, 0),
+(9, 1, 3170120654336724, 6913, 0);
 
 -- --------------------------------------------------------
 
@@ -56,8 +58,7 @@ INSERT INTO `accounts` (`AccountID`, `AccountOwnerID`, `AccountNumber`, `Account
 
 CREATE TABLE `clients` (
   `ClientID` int(3) NOT NULL,
-  `Name` varchar(40) COLLATE utf8mb4_polish_ci NOT NULL,
-  `Surname` varchar(40) COLLATE utf8mb4_polish_ci NOT NULL,
+  `FullName` varchar(80) COLLATE utf8mb4_polish_ci NOT NULL,
   `Gender` varchar(20) COLLATE utf8mb4_polish_ci NOT NULL,
   `Age` int(3) NOT NULL,
   `Phonenumber` int(9) NOT NULL,
@@ -68,14 +69,14 @@ CREATE TABLE `clients` (
 -- Zrzut danych tabeli `clients`
 --
 
-INSERT INTO `clients` (`ClientID`, `Name`, `Surname`, `Gender`, `Age`, `Phonenumber`, `Address`) VALUES
-(1, 'Jacek', 'Łoś', 'Male', 25, 355456789, 'Miodowa 12 '),
-(2, 'Anna ', 'Kowalska', 'Female', 23, 355234689, 'Malińska 28'),
-(3, 'Paweł', 'Jumper', 'Male', 38, 355412376, 'Raymonta 36'),
-(4, 'Hanna', 'Pawlak', 'Female', 55, 123122224, 'Akacjowa 1'),
-(5, 'Łukasz ', 'Dzik', 'Male', 19, 355456789, 'Złota 10'),
-(6, 'Albert', 'Pawlak', 'Male', 57, 213643222, 'Akacjowa 1'),
-(7, 'Aleksander ', 'Witkowski', 'Male', 35, 111808333, 'Kolorowa 21');
+INSERT INTO `clients` (`ClientID`, `FullName`, `Gender`, `Age`, `Phonenumber`, `Address`) VALUES
+(1, 'Jacek Łoś', 'Male', 25, 355456789, 'Miodowa 12 '),
+(2, 'Anna Kowalska', 'Female', 23, 355234689, 'Malińska 28'),
+(3, 'Paweł Jumper', 'Male', 38, 355412376, 'Raymonta 36'),
+(4, 'Hanna Pawlak', 'Female', 55, 123122224, 'Akacjowa 1'),
+(5, 'Łukasz Dzik', 'Male', 19, 355456789, 'Złota 10'),
+(6, 'Albert Pawlak', 'Male', 57, 213643222, 'Akacjowa 1'),
+(7, 'Aleksander Witkowski', 'Male', 35, 111808333, 'Kolorowa 21');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -101,7 +102,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT dla tabeli `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `AccountID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `AccountID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT dla tabeli `clients`

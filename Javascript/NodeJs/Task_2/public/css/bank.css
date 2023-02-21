@@ -1,5 +1,6 @@
 body{
     margin: auto;
+    min-width: 500px;
 }
 
 .App{
@@ -33,7 +34,8 @@ img{
 .App-form{
     background-color: #dadada;
     border: 1px solid #282c34;
-    width: 20%;
+    border-radius: 16px;
+    width: 400px;
     height: 60%;
     margin-top: -100px;
     display: flex;
@@ -59,21 +61,26 @@ img{
 .Menu{
     background-color: #dadada;
     border: 1px solid #282c34;
-    width: 25%;
+    border-radius: 16px;
+    width: 500px;
     height: 70%;
     margin-top: -100px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .Menu .Menu-Title{
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
 }
 
-.Menu input{
+.Menu .description, .Menu .menu-errors{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.Menu .menu-form input{
     display: block;
     margin: auto;
     height: 30px;
@@ -85,5 +92,20 @@ img{
 
 .Menu form{
     display: flex;
+    flex-direction: column;
+    margin-bottom: -10px;
+}
+
+.Menu .option{
+    display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.Menu .Amount{
+    margin-left: 35px !important;
+}
+
+.Menu .Menu-Option{
+    margin-top: 4px;
 }
