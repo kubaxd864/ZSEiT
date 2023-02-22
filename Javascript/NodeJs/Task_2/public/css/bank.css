@@ -75,7 +75,8 @@ img{
     font-weight: bold;
 }
 
-.Menu .description, .Menu .menu-errors{
+.Menu .description, .Menu .messages{
+    height: 200px;
     font-size: 15px;
     font-weight: bold;
 }
