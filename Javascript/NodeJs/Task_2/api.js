@@ -168,7 +168,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
             }
             else{
                 console.log(rows)
-                var Message = "Identyfikator Klienta: " + rows[0].AccountOwnerID + "\nNumer Konta: " + rows[0].AccountNumber + "\nPin: " + rows[0].AccountPin + "\nSaldo: " + rows[0].Balance;
+                var Message = "Lista Klientów wyświetlona w konsoli";
                 res.render('Menu' , { Message : Message, Name : global.Name })
             }
         })
