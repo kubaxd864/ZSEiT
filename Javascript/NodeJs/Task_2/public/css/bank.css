@@ -94,7 +94,6 @@ img{
 .Menu form{
     display: flex;
     flex-direction: column;
-    margin-bottom: -10px;
 }
 
 .Menu .option{
@@ -103,8 +102,9 @@ img{
     margin-bottom: 10px;
 }
 
-.Menu .Amount{
-    margin-left: 35px !important;
+.Menu .account_inputs{
+    display: flex;
+    flex-direction: row;
 }
 
 .Menu .Menu-Option{

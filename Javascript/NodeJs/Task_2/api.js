@@ -58,7 +58,7 @@ app.post("/bank", urlencodedParser, async (req, res) => {
 app.post("/menu", urlencodedParser, async (req, res) => {
 
     try {
-    if(req.body.choice == "Wyświetl Dane"){
+    if(req.body.choice == "Wyświetl Dane" || req.body.choice == "1"){
         dbConnection.execute('Select * from clients WHERE FullName = ?', [global.FullName])
         .then(([rows]) => {
             if(rows.length == 0){
@@ -71,7 +71,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
             }
         })
     }
-    else if (req.body.choice == "Dodaj Nowe Konto") {
+    else if (req.body.choice == "Dodaj Nowe Konto" || req.body.choice == "2") {
         var first_part = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
         var second_part = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
         var third_part = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
@@ -82,7 +82,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
         var Message = "Dodano Konto"
         res.render('Menu' , { Message : Message, Name : global.Name })
     }
-    else if (req.body.choice == "Wpłata") {
+    else if (req.body.choice == "Wpłata" || req.body.choice == "3") {
         dbConnection.execute('Select Balance from accounts WHERE AccountOwnerID = ?', [global.AccountOwnerID])
         .then(([rows]) => {
             if(rows.length == 0){
@@ -103,7 +103,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
             }
         })
     }
-    else if (req.body.choice == "Wypłata") {
+    else if (req.body.choice == "Wypłata" || req.body.choice == "4") {
         dbConnection.execute('Select Balance from accounts WHERE AccountOwnerID = ?', [global.AccountOwnerID])
         .then(([rows]) => {
             if(rows.length == 0){
@@ -116,21 +116,21 @@ app.post("/menu", urlencodedParser, async (req, res) => {
                     res.render('Menu' , { Message : Message, Name : global.Name })
                 }
                 else{
-                    var New_Balance = rows[0].Balance - req.body.amount 
-                    if(New_Balance <= req.body.amount){
-                        var Message = "Nie Masz Tyle Środków"
+                    var New_Balance = rows[0].Balance - req.body.amount
+                    if(parseInt(req.body.amount) <= parseInt(rows[0].Balance)){
+                        dbConnection.execute('UPDATE accounts SET Balance = ? WHERE AccountOwnerID = ?', [New_Balance, global.AccountOwnerID])
+                        var Message = "Wypłacono"
                         res.render('Menu' , { Message : Message, Name : global.Name })
                     }
                     else{
-                        dbConnection.execute('UPDATE accounts SET Balance = ? WHERE AccountOwnerID = ?', [New_Balance, global.AccountOwnerID])
-                        var Message = "Wypłacono"
+                        var Message = "Nie Masz Tyle Środków"
                         res.render('Menu' , { Message : Message, Name : global.Name })
                     }
                 }
             }
         })
     }
-    else if (req.body.choice == "Sprawdź Saldo") {
+    else if (req.body.choice == "Sprawdź Saldo" || req.body.choice == "5") {
         dbConnection.execute('Select Balance from accounts WHERE AccountOwnerID = ?', [global.AccountOwnerID])
         .then(([rows]) => {
             if(rows.length == 0){
@@ -143,7 +143,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
             }
         })
     }
-    else if (req.body.choice == "Lista Klientów") {
+    else if (req.body.choice == "Lista Klientów" || req.body.choice == "6") {
         dbConnection.execute('Select FullName from clients')
         .then(([rows]) => {
             if(rows.length == 0){
@@ -159,7 +159,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
             }
         })
     }
-    else if (req.body.choice == "Lista Kont Klienta") {
+    else if (req.body.choice == "Lista Kont Klienta" || req.body.choice == "7") {
         dbConnection.execute('Select * from accounts WHERE AccountOwnerID = ?', [global.AccountOwnerID])
         .then(([rows]) => {
             if(rows.length == 0){
@@ -173,7 +173,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
             }
         })
     }
-    else if (req.body.choice == "Wyloguj") {
+    else if (req.body.choice == "Wyloguj" || req.body.choice == "8") {
         var Logout = "Wylogowano Poprawnie"
         res.render('bank' , { Message : Logout })
     }
