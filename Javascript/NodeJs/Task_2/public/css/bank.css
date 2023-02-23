@@ -76,12 +76,12 @@ img{
 }
 
 .Menu .description, .Menu .messages{
-    height: 200px;
+    height: 30px;
     font-size: 15px;
     font-weight: bold;
 }
 
-.Menu .menu-form input{
+.Menu .menu-form input, .Menu .account-form input, .back input[type="submit"]{
     display: block;
     margin: auto;
     height: 30px;
@@ -99,14 +99,20 @@ img{
 .Menu .option{
     display: flex;
     flex-direction: row;
-    margin-bottom: 10px;
-}
-
-.Menu .account_inputs{
-    display: flex;
-    flex-direction: row;
 }
 
 .Menu .Menu-Option{
     margin-top: 4px;
+}
+
+.Menu .account-form input[type="submit"]{
+    margin-left: 105px;
+    margin-top: 10px;
+    width: 150px;
+}
+
+.Menu .message{
+    margin-top: -25px;
+    font-size: 15px;
+    font-weight: bold;
 }

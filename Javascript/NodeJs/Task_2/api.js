@@ -83,54 +83,34 @@ app.post("/menu", urlencodedParser, async (req, res) => {
         res.render('Menu' , { Message : Message, Name : global.Name })
     }
     else if (req.body.choice == "Wpłata" || req.body.choice == "3") {
-        dbConnection.execute('Select Balance from accounts WHERE AccountOwnerID = ?', [global.AccountOwnerID])
-        .then(([rows]) => {
-            if(rows.length == 0){
-                var Message = "Nie Można Wyświetlić Danych"
-                res.render('Menu' , { Message : Message, Name : global.Name })
-            }
-            else{
-                if(req.body.amount <= 0){
-                    var Message = "Podaj Kwotę większą od 0"
-                    res.render('Menu' , { Message : Message, Name : global.Name })
-                }
-                else{
-                    var AddBalance = (parseInt(rows[0].Balance) + parseInt(req.body.amount))
-                    dbConnection.execute('UPDATE accounts SET Balance = ? WHERE AccountOwnerID = ?', [AddBalance, global.AccountOwnerID])
-                    var Message = "Wpłacono"
-                    res.render('Menu' , { Message : Message, Name : global.Name })
-                }
-            }
-        })
+        var Title = "Podaj Numer Konta Na Które Chcesz Dokonać Wpłaty Oraz Kwotę:"
+        var Message = ""
+        var Button = "Wpłać"
+        res.render('Account' , { Message : Message, Name : global.Name, Title : Title, Button : Button })
+        global.Choice = req.body.choice
     }
     else if (req.body.choice == "Wypłata" || req.body.choice == "4") {
-        dbConnection.execute('Select Balance from accounts WHERE AccountOwnerID = ?', [global.AccountOwnerID])
-        .then(([rows]) => {
-            if(rows.length == 0){
-                var Message = "Nie Można Wyświetlić Danych"
-                res.render('Menu' , { Message : Message, Name : global.Name })
-            }
-            else{
-                if(req.body.amount <= 0){
-                    var Message = "Podaj Kwotę większą od 0"
-                    res.render('Menu' , { Message : Message, Name : global.Name })
-                }
-                else{
-                    var New_Balance = rows[0].Balance - req.body.amount
-                    if(parseInt(req.body.amount) <= parseInt(rows[0].Balance)){
-                        dbConnection.execute('UPDATE accounts SET Balance = ? WHERE AccountOwnerID = ?', [New_Balance, global.AccountOwnerID])
-                        var Message = "Wypłacono"
-                        res.render('Menu' , { Message : Message, Name : global.Name })
-                    }
-                    else{
-                        var Message = "Nie Masz Tyle Środków"
-                        res.render('Menu' , { Message : Message, Name : global.Name })
-                    }
-                }
-            }
-        })
+        var Title = "Podaj Numer Konta Z którego Chcesz Dokonać Wypłaty Oraz Kwotę:"
+        var Message = ""
+        var Button = "Wpłać"
+        res.render('Account' , { Message : Message, Name : global.Name, Title : Title, Button : Button })
+        global.Choice = req.body.choice
     }
-    else if (req.body.choice == "Sprawdź Saldo" || req.body.choice == "5") {
+    else if (req.body.choice == "Dodaj Limit Wypłaty" || req.body.choice == "5") {
+        var Title = "Podaj Numer Konta Oraz Kwotę Limitu Wypłaty Który Chcesz Ustawić:"
+        var Message = ""
+        var Button = "Dodaj Limit"
+        res.render('Account' , { Message : Message, Name : global.Name, Title : Title, Button : Button })
+        global.Choice = req.body.choice
+    }
+    else if (req.body.choice == "Usuń Limit Wypłaty" || req.body.choice == "6") {
+        var Title = "Podaj Numer Konta Z Którego Chcesz Usunąć Limit:"
+        var Message = ""
+        var Button = "Usuń Limit"
+        res.render('Account' , { Message : Message, Name : global.Name, Title : Title, Button : Button })
+        global.Choice = req.body.choice
+    }
+    else if (req.body.choice == "Sprawdź Saldo" || req.body.choice == "7") {
         dbConnection.execute('Select Balance from accounts WHERE AccountOwnerID = ?', [global.AccountOwnerID])
         .then(([rows]) => {
             if(rows.length == 0){
@@ -143,7 +123,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
             }
         })
     }
-    else if (req.body.choice == "Lista Klientów" || req.body.choice == "6") {
+    else if (req.body.choice == "Lista Klientów" || req.body.choice == "8") {
         dbConnection.execute('Select FullName from clients')
         .then(([rows]) => {
             if(rows.length == 0){
@@ -159,7 +139,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
             }
         })
     }
-    else if (req.body.choice == "Lista Kont Klienta" || req.body.choice == "7") {
+    else if (req.body.choice == "Lista Kont Klienta" || req.body.choice == "9") {
         dbConnection.execute('Select * from accounts WHERE AccountOwnerID = ?', [global.AccountOwnerID])
         .then(([rows]) => {
             if(rows.length == 0){
@@ -173,7 +153,7 @@ app.post("/menu", urlencodedParser, async (req, res) => {
             }
         })
     }
-    else if (req.body.choice == "Wyloguj" || req.body.choice == "8") {
+    else if (req.body.choice == "Wyloguj" || req.body.choice == "10") {
         var Logout = "Wylogowano Poprawnie"
         res.render('bank' , { Message : Logout })
     }
@@ -186,6 +166,119 @@ app.post("/menu", urlencodedParser, async (req, res) => {
         console.log(error)
     }
 })
+
+app.post("/account", urlencodedParser, async (req, res) => {
+    try {
+        if (global.Choice == "Wpłata" || global.Choice == "3") {
+            var Title = "Podaj Numer Konta Na Które Chcesz Dokonać Wpłaty Oraz Kwotę:"
+            var Button = "Wpłać"
+            dbConnection.execute('Select Balance from accounts WHERE AccountOwnerID = ? AND AccountNumber = ?', [global.AccountOwnerID, req.body.accountNumber])
+            .then(([rows]) => {
+                  if(rows.length == 0){
+                    var Message = "Nie Można Wyświetlić Danych"
+                    res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                  }
+                  else{
+                      if(req.body.amount <= 0){
+                        var Message = "Podaj Kwotę większą od 0"
+                        res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                      }
+                      else{
+                        var AddBalance = (parseInt(rows[0].Balance) + parseInt(req.body.amount))
+                        dbConnection.execute('UPDATE accounts SET Balance = ? WHERE AccountOwnerID = ? AND AccountNumber = ?', [AddBalance, global.AccountOwnerID, req.body.accountNumber])
+                        var Message = "Wpłacono"
+                        res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                     }
+                  }
+             })
+        }
+        else if (global.Choice == "Wypłata" || global.Choice == "4") {
+            var Title = "Podaj Numer Konta Z Którego Chcesz Dokonać Wypłaty Oraz Kwotę:"
+            var Button = "Wypłać"
+            dbConnection.execute('Select Balance from accounts WHERE AccountOwnerID = ? AND AccountNumber = ?', [global.AccountOwnerID, req.body.accountNumber])
+            .then(([rows]) => {
+                if(rows.length == 0){
+                     var Message = "Nie Można Wyświetlić Danych"
+                     res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                }
+                else{
+                    if(req.body.amount <= 0){
+                         var Message = "Podaj Kwotę większą od 0"
+                         res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                    }
+                    else{
+                        var New_Balance = rows[0].Balance - req.body.amount
+                        if(parseInt(req.body.amount) <= parseInt(rows[0].Balance)){
+                             dbConnection.execute('UPDATE accounts SET Balance = ? WHERE AccountOwnerID = ? AND AccountNumber = ?', [New_Balance, global.AccountOwnerID, req.body.accountNumber])
+                            var Message = "Wypłacono"
+                             res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                        }
+                        else{
+                             var Message = "Nie Masz Tyle Środków"
+                             res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                        }
+                    }
+                }
+            })
+        }
+        else if (global.Choice == "Dodaj Limit Wypłaty" || global.Choice == "5") {
+            var Title = "Podaj Numer Konta Na Które Chcesz Ustawić Limit Wypłaty Oraz Kwotę:"
+            var Button = "Dodaj Limit"
+            dbConnection.execute('Select WithdrawLimit from accounts WHERE AccountOwnerID = ? AND AccountNumber = ?', [global.AccountOwnerID, req.body.accountNumber])
+            .then(([rows]) => {
+                if(rows.length == 0){
+                    var Message = "Nie Można Wyświetlić Danych"
+                    res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                }
+                else{
+                    if(req.body.amount < 0){
+                        var Message = "Podaj Kwotę większą od 0"
+                        res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                    }
+                    else{
+                        dbConnection.execute('UPDATE accounts SET WithdrawLimit = ? WHERE AccountOwnerID = ? AND AccountNumber = ?', [req.body.amount, global.AccountOwnerID, req.body.accountNumber])
+                        var Message = "Dodano Limit"
+                        res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                    }
+                }
+            })
+        }
+        else if (global.Choice == "Usuń Limit Wypłaty" || global.Choice == "6") {
+            var Title = "Podaj Numer Konta Z Którego Chcesz Usunąć Limit Wypłaty:"
+            var Button = "Usuń Limit"
+            dbConnection.execute('Select WithdrawLimit from accounts WHERE AccountOwnerID = ? AND AccountNumber = ?', [global.AccountOwnerID, req.body.accountNumber])
+            .then(([rows]) => {
+                if(rows.length == 0){
+                    var Message = "Nie Można Wyświetlić Danych"
+                    res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                }
+                else{
+                    if(rows[0].WithdrawLimit == null){
+                        var Message = "Nie posiadasz limitu wypłaty na tym koncie"
+                        res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                    }
+                    else{
+                        dbConnection.execute('UPDATE accounts SET WithdrawLimit = ? WHERE AccountOwnerID = ? AND AccountNumber = ?', [null, global.AccountOwnerID, req.body.accountNumber])
+                        var Message = "Usunięto Limit"
+                        res.render('Account' , { Message : Message, Name : global.Name, Title : Title , Button : Button })
+                    }
+                }
+            })
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+app.post("/back", urlencodedParser, async (req, res) => {
+    try {
+    res.render('Menu' , { Name : global.Name, Message : "" })
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 app.listen(3000, () => {
     console.log(`Serwer został uruchomiony: http://localhost:3000`)
