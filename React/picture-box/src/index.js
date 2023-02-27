@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import RS3 from './RS3';
-import RS4 from './RS4';
-import RS6 from './RS6';
+import RS3 from './RS3-Box';
+import RS4 from './RS4-Box';
+import RS6 from './RS6-Box';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
