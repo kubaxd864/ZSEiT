@@ -1,4 +1,4 @@
-import './App.css';
+import '../App.css';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -18,19 +18,19 @@ function RS4() {
         >
 
         <SwiperSlide className='slides'>
-          <img src={require('./img/RS4/Audi-RS4-1.jpg')} alt="Audi RS4"/>
+          <img src={require('../img/RS4/Audi-RS4-1.jpg')} alt="Audi RS4"/>
         </SwiperSlide>
 
         <SwiperSlide className='slides'>
-          <img src={require('./img/RS4/Audi-RS4-2.jpg')} alt="Audi RS4"/>
+          <img src={require('../img/RS4/Audi-RS4-2.jpg')} alt="Audi RS4"/>
         </SwiperSlide>
 
         <SwiperSlide className='slides'>
-          <img src={require('./img/RS4/Audi-RS4-3.jpg')} alt="Audi RS4"/>
+          <img src={require('../img/RS4/Audi-RS4-3.jpg')} alt="Audi RS4"/>
         </SwiperSlide>
 
         <SwiperSlide className='slides'>
-          <img src={require('./img/RS4/Audi-RS4-4.jpg')} alt="Audi RS4"/>
+          <img src={require('../img/RS4/Audi-RS4-4.jpg')} alt="Audi RS4"/>
         </SwiperSlide>
         
         </Swiper>
