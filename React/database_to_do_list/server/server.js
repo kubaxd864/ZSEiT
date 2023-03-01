@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const port = 5000
 const cors = require("cors");
 const mysql = require('mysql2');
 const dbConnection = mysql.createPool({
@@ -11,8 +10,6 @@ const dbConnection = mysql.createPool({
 }).promise();
 
 app.use(cors());
-app.listen(port, () => console.log("Backend Działa na localhost:"+port));
-
 app.get("/", (req, res) => {
   dbConnection.execute('Select * from to_do')
   .then(([rows]) => {
@@ -22,3 +19,5 @@ app.get("/", (req, res) => {
     res.send({message: err});
   })
 });
+
+app.listen(5000, () => console.log("Backend Działa na localhost:5000"));
