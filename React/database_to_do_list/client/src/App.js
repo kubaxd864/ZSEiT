@@ -1,34 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import './App.css';
-import Axios from 'axios';
+import axios from 'axios';
 
 function App() {
   const [todo, setTodo] = useState([]);
-  Axios({
-    method: "GET",
-    url: "http://localhost:5000/",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }).then(res => {
-    setTodo(res.data.message);
-  });
+  useEffect(() => {
+    axios.get("http://localhost:5000/").then((response) => {
+      setTodo(response.data.message);
+      console.log(response.data.message);
+    })
+  }, [])
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <p>Lista rzeczy do zrobienia:</p>
+        <p className='to_do'>
+          <p>{todo[0].thinks_to_do}</p>
         </p>
-        <p>{todo[1].id}</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button>Get Data</button>
       </header>
     </div>
   );
