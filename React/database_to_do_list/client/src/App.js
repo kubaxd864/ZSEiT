@@ -9,10 +9,12 @@ import {
   Box,
   Button,
   Stack,
+  useToast,
 } from '@chakra-ui/react'
 import { DeleteIcon, RepeatIcon, AddIcon, MinusIcon } from '@chakra-ui/icons'
 
 function App() {
+  const toast = useToast();
   const [todo, setTodo] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:5000/").then((response) => {
@@ -37,8 +39,16 @@ function App() {
       <header className="App-header">
         <div className='container'>
           <h1>Lista rzeczy do zrobienia:</h1>
-          <Button bg='lightgray' borderWidth='1px' borderColor='black' height='30' onClick={Update}>
-              <AddIcon fontSize='12px' marginRight='3' onClick={Add}/>
+          <Button bg='lightgray' borderWidth='1px' borderColor='black' height='30' onClick={() =>
+                toast({
+                  title: 'Account created.',
+                  description: "We've created your account for you.",
+                  status: 'success',
+                  duration: 9000,
+                  isClosable: true,
+                })
+              }>
+              <AddIcon fontSize='12px' marginRight='3'/>
               <p>Add New Element</p>
           </Button>
           <p className='to_do'>
@@ -64,7 +74,7 @@ function App() {
                           <DeleteIcon fontSize='12px' marginRight='3'/>
                           <p>Delete</p>
                         </Button>
-                        <Button bg='lightgray' borderWidth='1px' borderColor='black' height='30' onClick={Update}>
+                        <Button bg='lightgray' borderWidth='1px' borderColor='black' height='30'>
                           <RepeatIcon fontSize='12px' marginRight='3'/>
                           <p>Update</p>
                         </Button>
