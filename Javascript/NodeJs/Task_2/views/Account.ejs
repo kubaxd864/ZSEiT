@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Bank</title>
+    <link rel="stylesheet" href="css/bank.css"/>
+    <link rel="shortcut icon" href="images/Bank_Logo.png"/>
+</head>
+<body>
+    <div class="App-header">
+        <img src="images/Bank_Logo.png" class="App-logo" alt="logo" />
+        <h2>Good Bank</h2>
+    </div>
+    <div class="App" id="App">
+        <div class="Menu">
+            <p class="Menu-Title">Witaj <%= Name %></p>
+            <p class="description"><%= Title %></p>
+            <form action="/account" method="post" class="account-form">
+                <div class="option">
+                    <input type="text" name="accountNumber" placeholder="Numer Konta"><br>
+                    <input type="text" class="Amount" name="amount" placeholder="Kwota"><br>
+                </div>
+                <input type="submit" value="<%= Button %>">
+            </form>
+            <p class="messages"><%= Message %></p>
+            <form action="/back" method="post" class="back">
+                <input type="submit" value="Powrót Do Menu">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

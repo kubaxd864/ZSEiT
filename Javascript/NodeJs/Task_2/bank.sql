@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 21 Lut 2023, 21:37
+-- Czas generowania: 23 Lut 2023, 19:50
 -- Wersja serwera: 10.4.25-MariaDB
 -- Wersja PHP: 8.1.10
 
@@ -32,23 +32,24 @@ CREATE TABLE `accounts` (
   `AccountOwnerID` int(3) NOT NULL,
   `AccountNumber` bigint(16) NOT NULL,
   `AccountPin` int(4) NOT NULL,
-  `Balance` bigint(20) NOT NULL
+  `Balance` bigint(20) NOT NULL,
+  `WithdrawLimit` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Zrzut danych tabeli `accounts`
 --
 
-INSERT INTO `accounts` (`AccountID`, `AccountOwnerID`, `AccountNumber`, `AccountPin`, `Balance`) VALUES
-(1, 1, 1234567890123453, 1234, 1180400),
-(2, 2, 9876543211334561, 3342, 2000),
-(3, 3, 1234099034511231, 2137, 5500),
-(4, 4, 6634232100002322, 7012, 44000),
-(5, 5, 1132424576553300, 5561, 100),
-(6, 6, 1232434576543345, 4110, 100000),
-(7, 7, 1234507893323053, 6712, 7250),
-(8, 1, 5876240472071433, 1390, 0),
-(9, 1, 3170120654336724, 6913, 0);
+INSERT INTO `accounts` (`AccountID`, `AccountOwnerID`, `AccountNumber`, `AccountPin`, `Balance`, `WithdrawLimit`) VALUES
+(1, 1, 1234567890123453, 1234, 984000, NULL),
+(2, 2, 9876543211334561, 3342, 2000, NULL),
+(3, 3, 1234099034511231, 2137, 5500, NULL),
+(4, 4, 6634232100002322, 7012, 44000, NULL),
+(5, 5, 1132424576553300, 5561, 100, NULL),
+(6, 6, 1232434576543345, 4110, 100000, NULL),
+(7, 7, 1234507893323053, 6712, 7250, NULL),
+(8, 1, 5876240472071433, 1390, 2000, NULL),
+(9, 1, 3170120654336724, 6913, 10521, NULL);
 
 -- --------------------------------------------------------
 
