@@ -8,6 +8,6 @@ npm install
 
 **Następnie Należy odpalić folder w Visual Studio Code i wpisać:**
 ```
-npm start
+node server.js
 ```
-**Strona Automatycznie Uruchomi się na http://localhost:3000/**
+**Następnie Backend Uruchomi się na http://localhost:5000**

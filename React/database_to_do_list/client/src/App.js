@@ -17,6 +17,7 @@ function App() {
   const [showAddDiv, setShowAddDiv] = useState(false);
   const [showUpdateDiv, setShowUpdateDiv] = useState(false);
   const [updatedid, setUpdatedId] = useState();
+  const [updateMessage, setUpdateMessage] = useState();
   useEffect(() => {
     axios.get("http://localhost:5000/").then((response) => {
       setTodo(response.data.message);
@@ -50,12 +51,13 @@ function App() {
                   description: description
                 }).then(response => {
                   setTodo(response.data.message);
+                  setUpdateMessage(response.data.err_message);
                 })
               }}>
                 <ArrowUpIcon fontSize='12px' marginRight='3'/>
                 <p>Add Element</p>
               </Button>
-              <p className='Message'></p>
+              <p className='Message'>{updateMessage}</p>
             </div>
           )}
           {showUpdateDiv && (
@@ -72,12 +74,13 @@ function App() {
                   description: description
                 }).then(response => {
                   setTodo(response.data.message);
+                  setUpdateMessage(response.data.err_message);
                 })
               }}>
                 <ArrowUpIcon fontSize='12px' marginRight='3'/>
                 <p>Update Element</p>
               </Button>
-              <p className='Message'></p>
+              <p className='Message'>{updateMessage}</p>
             </div>
           )}
           <p className='to_do'>
