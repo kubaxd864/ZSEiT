@@ -15,7 +15,7 @@
   flex-direction: row;
 }
 
-.Add input{
+.Add input, .Update input{
   width: 40%;
   height: 30px;
   border-radius: 16px;
@@ -23,6 +23,6 @@
   margin: 10px 10px 0px 0px;
 }
 
-.Add input::-webkit-input-placeholder {
+.Add input::-webkit-input-placeholder, .Update input::-webkit-input-placeholder{
   text-align: center;
 }
