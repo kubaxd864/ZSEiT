@@ -20,7 +20,8 @@
             android:textSize="100px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mój Grafik Zadań" />
+            android:text="Mój Grafik Zadań"
+            android:textAppearance= "@style/Base.TextAppearance.AppCompat.Large"/>
 
         <ImageView
             android:id="@+id/imageView"
@@ -30,12 +31,13 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_gravity="center"
-            android:layout_marginTop="15px"
-            android:textSize="50px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Samsung S20 Android 12 Wersja 1.0" />
+            android:layout_gravity="center"
+            android:layout_marginTop="200px"
+            android:text=""
+            android:textSize="50px"
+            android:textAppearance= "@style/Base.TextAppearance.AppCompat.Large"/>
     </LinearLayout>
 
 

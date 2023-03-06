@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Page1" />
+        <activity android:name=".Page2" />
     </application>
 
 </manifest>

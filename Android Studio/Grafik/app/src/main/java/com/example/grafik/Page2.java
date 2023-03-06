@@ -11,21 +11,12 @@ import android.view.View;
 import com.google.android.material.navigation.NavigationView;
 
 
-public class Page1 extends AppCompatActivity {
+public class Page2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu);
+        setContentView(R.layout.page_2);
         getSupportActionBar().hide();
-
-        final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-
-        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
     }
 }
