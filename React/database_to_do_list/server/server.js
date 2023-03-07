@@ -62,23 +62,27 @@ app.post('/update', async (req, res) => {
   const id = req.body.id;
   const title = req.body.title;
   const description = req.body.description;
-  if(title === '' || description === '') {
+  if(title === '' && description === '') {
     res.send({err_message: 'Podaj dane które chcesz zaktualizować'});
-  } else if(title === '' ) {
+    console.log('Podaj dane które chcesz zaktualizować');
+  } 
+  else if(title === '') {
     dbConnection.execute('UPDATE to_do SET description = ? WHERE id = ?', [description, id]).then(() => {
       dbConnection.execute('Select * from to_do')
       .then(([rows]) => {
       res.send({message: rows, err_message: 'Zmieniono tylko opis'});
     })
     })
-  } else if(description === '') {
+  } 
+  else if(description === '') {
     dbConnection.execute('UPDATE to_do SET title = ? WHERE id = ?', [title, id]).then(() => {
       dbConnection.execute('Select * from to_do')
       .then(([rows]) => {
       res.send({message: rows, err_message: 'Zmieniono tylko tytuł'});
     })
     })
-  } else {
+  } 
+  else {
     dbConnection.execute('UPDATE to_do SET title = ?, description = ? WHERE id = ?', [title, description, id]).then(() => {
       dbConnection.execute('Select * from to_do')
       .then(([rows]) => {

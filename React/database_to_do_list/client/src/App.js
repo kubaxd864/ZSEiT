@@ -74,7 +74,7 @@ function App() {
                   description: description
                 }).then(response => {
                   setTodo(response.data.message);
-                  setUpdateMessage(response.data.err_message);
+                  setUpdateMessage(response.data.err_message)
                 })
               }}>
                 <ArrowUpIcon fontSize='12px' marginRight='3'/>
