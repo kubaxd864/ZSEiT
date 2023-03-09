@@ -2,5 +2,6 @@
     <string name="app_name">Grafik</string>
     <string name="main_page">Main Page</string>
     <string name="calendar">Calendar</string>
+    <string name="calculator">Calculator</string>
     <string name="settings">Settings</string>
 </resources>

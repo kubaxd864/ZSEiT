@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView;
     private TextView textView2;
 
     @Override
@@ -21,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
         String deviceName = Build.MODEL;
         String deviceManufacturer = Build.MANUFACTURER;

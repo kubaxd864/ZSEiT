@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -39,13 +40,20 @@ public class Page1 extends AppCompatActivity implements NavigationView.OnNavigat
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.calendar:
-                Intent intent2 = new Intent(this, Page2.class);
-                startActivity(intent2);
-                return true;
-            case R.id.settings:
-                Intent intent3 = new Intent(android.provider.Settings.ACTION_SETTINGS);
+
+//            case R.id.calendar:
+//                Intent intent2 = new Intent(this, Page2.class);
+//                startActivity(intent2);
+//                return true;
+
+            case R.id.calculator:
+                Intent intent3 = new Intent(this, Page3.class);
                 startActivity(intent3);
+                return true;
+
+            case R.id.settings:
+                Intent intent4 = new Intent(android.provider.Settings.ACTION_SETTINGS);
+                startActivity(intent4);
                 return true;
             default:
                 return false;
