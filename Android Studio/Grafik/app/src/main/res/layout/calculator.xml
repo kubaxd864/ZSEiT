@@ -16,14 +16,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView3"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Kalkulator BMI"
-            android:textSize="40dp" />
+            android:layout_height="80dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/menuButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:fabCustomSize="60dp"
+                app:fabSize="normal"
+                app:maxImageSize="50dp"
+                app:srcCompat="@drawable/ic_back"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="0dp"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Kalkulator BMI"
+                android:textSize="30dp"
+                tools:layout_editor_absoluteX="115dp"
+                tools:layout_editor_absoluteY="40dp"
+                android:textAppearance= "@style/Base.TextAppearance.AppCompat.Large" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textwaga"
@@ -33,7 +57,8 @@
             android:layout_weight="1"
             android:text="Waga (kg)"
             android:gravity="center"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textAppearance= "@style/Base.TextAppearance.AppCompat.Large"/>
 
         <EditText
             android:id="@+id/waga"
@@ -42,7 +67,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:gravity="center"
-            android:inputType="number" />
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/textwiek"
@@ -52,7 +77,8 @@
             android:layout_weight="1"
             android:text="Wiek (lata)"
             android:gravity="center"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textAppearance= "@style/Base.TextAppearance.AppCompat.Large"/>
 
         <EditText
             android:id="@+id/wiek"
@@ -71,7 +97,8 @@
             android:layout_weight="1"
             android:text="Wysokość (cm)"
             android:gravity="center"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textAppearance= "@style/Base.TextAppearance.AppCompat.Large"/>
 
         <EditText
             android:id="@+id/wysokosc"
@@ -83,35 +110,37 @@
             android:inputType="number" />
 
         <TextView
-            android:id="@+id/result"
+            android:id="@+id/wynik"
             android:layout_width="match_parent"
-            android:layout_height="10px"
+            android:layout_height="0px"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="Wynik"
+            android:text="Twoje BMI wynosi"
             android:gravity="center"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textAppearance= "@style/Base.TextAppearance.AppCompat.Large"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="61dp">
+            android:layout_height="150dp"
+            android:orientation="horizontal">
 
             <Button
-                android:id="@+id/back"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/calc_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="150px"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="Powrót" />
-
-            <Button
-                android:id="@+id/calc"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="40dp"
+                android:bottomRightRadius="10dp"
+                android:bottomLeftRadius="10dp"
+                android:topLeftRadius="10dp"
+                android:topRightRadius="10dp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:text="Oblicz" />
-
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

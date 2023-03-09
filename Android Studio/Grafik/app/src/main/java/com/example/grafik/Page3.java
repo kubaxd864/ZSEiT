@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class Page3 extends AppCompatActivity implements View.OnClickListener {
 
     @Override
@@ -17,13 +19,13 @@ public class Page3 extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator);
         getSupportActionBar().hide();
-        TextView textview_res = (TextView)findViewById(R.id.result);
+        TextView wynik = (TextView)findViewById(R.id.wynik);
         EditText waga = (EditText)findViewById(R.id.waga);
         EditText wiek = (EditText)findViewById(R.id.wiek);
         EditText wysokosc = (EditText)findViewById(R.id.wysokosc);
 
-        ((Button) findViewById(R.id.back)).setOnClickListener(this);
-        ((Button) findViewById(R.id.calc)).setOnClickListener(new View.OnClickListener() {
+        ((FloatingActionButton) findViewById(R.id.menuButton)).setOnClickListener(this);
+        ((Button) findViewById(R.id.calc_btn)).setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
@@ -31,7 +33,7 @@ public class Page3 extends AppCompatActivity implements View.OnClickListener {
                 float param2 = 5 * Float.parseFloat(wysokosc.getText().toString());
                 float param3 = (float) (6.8 * Float.parseFloat(wiek.getText().toString()));
                 float result = 66 + param1 + param2 - param3;
-                textview_res.setText("BMR: " + String.valueOf(result));
+                wynik.setText("Twoje BMI wynosi: " + String.valueOf(result));
             }
         });
     }
@@ -39,8 +41,8 @@ public class Page3 extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.back:
-                Intent intent = new Intent(this, MainActivity.class);
+            case R.id.menuButton:
+                Intent intent = new Intent(this, Page1.class);
                 startActivity(intent);
                 break;
         }

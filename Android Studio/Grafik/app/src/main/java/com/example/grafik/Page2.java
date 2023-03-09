@@ -11,10 +11,9 @@ import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -54,18 +53,20 @@ public class Page2 extends AppCompatActivity implements View.OnClickListener, Ca
 
     @Override
     public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-        DateTimeFormatter sdf = DateTimeFormatter.ofPattern("YYYY-MM-dd");
-        String date = sdf.format(LocalDate.of(year, month + 1, dayOfMonth));
-        if (dates.contains(date)) {
-            dates.remove(date);
-            Toast.makeText(getApplicationContext(), "Usunięto Wydarzenie z dnia " + date, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            dates.add(date);
-            Toast.makeText(getApplicationContext(), "Dodano Wydarzenie na " + date, Toast.LENGTH_SHORT).show();
+        Calendar selectedDate = Calendar.getInstance();
+        selectedDate.set(year, month, dayOfMonth);
+        if (selectedDate.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) {
+            dates.add("Masz Dzisiaj Trening");
             dates.remove("Brak Zaplanowanych Wydarzeń");
+            Toast.makeText(getApplicationContext(), "W Ten Dzień masz Trening ", Toast.LENGTH_SHORT).show();
+        }else if (selectedDate.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) {
+            dates.add("Masz Dzisiaj Trening");
+            dates.remove("Brak Zaplanowanych Wydarzeń");
+            Toast.makeText(getApplicationContext(), "W Ten Dzień masz Trening", Toast.LENGTH_SHORT).show();
+        }else {
+            dates.remove("Masz Dzisiaj Trening");
+            dates.add("Brak Zaplanowanych Wydarzeń");
         }
-
         ArrayAdapter<String> a = new ArrayAdapter<String>(this, R.layout.list_custom_text, R.id.list_content, Arrays.asList(dates.toArray(new String[dates.size()])));
         days.setAdapter(a);
     }

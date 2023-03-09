@@ -41,10 +41,10 @@ public class Page1 extends AppCompatActivity implements NavigationView.OnNavigat
                 startActivity(intent);
                 return true;
 
-//            case R.id.calendar:
-//                Intent intent2 = new Intent(this, Page2.class);
-//                startActivity(intent2);
-//                return true;
+            case R.id.calendar:
+                Intent intent2 = new Intent(this, Page2.class);
+                startActivity(intent2);
+                return true;
 
             case R.id.calculator:
                 Intent intent3 = new Intent(this, Page3.class);
