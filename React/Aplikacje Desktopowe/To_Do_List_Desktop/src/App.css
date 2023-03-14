@@ -1,0 +1,24 @@
+.App {
+  text-align: center;
+  border: 2px solid black;
+  margin: 10px;
+  padding-bottom:30px;
+  border-radius: 20px;
+}
+
+table{
+  border: 1px solid black;
+}
+
+p {
+  border-top: 1px solid black;
+  padding: 5px;
+}
+table{
+  width:40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#input{
+  margin-bottom: 10px;
+}

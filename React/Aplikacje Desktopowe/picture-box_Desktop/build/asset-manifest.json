@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "./static/css/main.b1c5f098.css",
+    "main.js": "./static/js/main.47d90151.js",
+    "static/media/Audi-RS3-2.jpg": "./static/media/Audi-RS3-2.8de12ba721c7e2e131b9.jpg",
+    "static/media/Audi-RS3-1.jpg": "./static/media/Audi-RS3-1.c36f024b8957509cd6a9.jpg",
+    "static/media/Audi-RS3-4.jpg": "./static/media/Audi-RS3-4.1304d84a27589a297b5d.jpg",
+    "static/media/Audi-RS4-1.jpg": "./static/media/Audi-RS4-1.726450a2f6c3a144b254.jpg",
+    "static/media/Audi-RS4-2.jpg": "./static/media/Audi-RS4-2.329371959c27494e2072.jpg",
+    "static/media/Audi-RS4-4.jpg": "./static/media/Audi-RS4-4.d9648a04788ed3892898.jpg",
+    "static/media/Audi-RS3-3.jpg": "./static/media/Audi-RS3-3.4c72d4b8a48647c14bd1.jpg",
+    "static/media/Audi-RS4-3.jpg": "./static/media/Audi-RS4-3.879457d6ab8426bc6666.jpg",
+    "static/media/Audi-RS6-3.jpg": "./static/media/Audi-RS6-3.27ec2211da87efaa0c62.jpg",
+    "static/media/Audi-RS6-1.jpg": "./static/media/Audi-RS6-1.17ea0e19f7c793ef306e.jpg",
+    "static/media/Audi-RS6-2.jpg": "./static/media/Audi-RS6-2.d5dd3eec001dd2990815.jpg",
+    "index.html": "./index.html",
+    "main.b1c5f098.css.map": "./static/css/main.b1c5f098.css.map",
+    "main.47d90151.js.map": "./static/js/main.47d90151.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1c5f098.css",
+    "static/js/main.47d90151.js"
+  ]
+}

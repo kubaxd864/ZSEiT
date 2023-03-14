@@ -1,0 +1,38 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  padding-top: 50px;
+  width: 600px;
+  height: 650px;
+  background: rgba(78, 76, 76, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+select{
+  width: 200px;
+  height: 30px;
+  border: 2px solid black
+}
+
+button{
+  margin-top: 10px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  border: 2px solid black
+}
