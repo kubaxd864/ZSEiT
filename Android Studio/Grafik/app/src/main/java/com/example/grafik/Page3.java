@@ -21,7 +21,6 @@ public class Page3 extends AppCompatActivity implements View.OnClickListener {
         getSupportActionBar().hide();
         TextView wynik = (TextView)findViewById(R.id.wynik);
         EditText waga = (EditText)findViewById(R.id.waga);
-        EditText wiek = (EditText)findViewById(R.id.wiek);
         EditText wysokosc = (EditText)findViewById(R.id.wysokosc);
 
         ((FloatingActionButton) findViewById(R.id.menuButton)).setOnClickListener(this);
@@ -29,11 +28,10 @@ public class Page3 extends AppCompatActivity implements View.OnClickListener {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                float param1 = (float) (13.7 * Float.parseFloat(waga.getText().toString()));
-                float param2 = 5 * Float.parseFloat(wysokosc.getText().toString());
-                float param3 = (float) (6.8 * Float.parseFloat(wiek.getText().toString()));
-                float result = 66 + param1 + param2 - param3;
-                wynik.setText("Twoje BMI wynosi: " + String.valueOf(result));
+                float Waga = Float.parseFloat(waga.getText().toString());
+                float Wysokosc = (Float.parseFloat(wysokosc.getText().toString())*Float.parseFloat(wysokosc.getText().toString()))/10000;
+                float Wynik = Waga/Wysokosc;
+                wynik.setText("Twoje BMI wynosi: " + String.valueOf(Wynik));
             }
         });
     }
