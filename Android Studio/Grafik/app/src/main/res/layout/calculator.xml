@@ -70,26 +70,6 @@
             android:inputType="number"/>
 
         <TextView
-            android:id="@+id/textwiek"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="Wiek (lata)"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:textAppearance= "@style/Base.TextAppearance.AppCompat.Large"/>
-
-        <EditText
-            android:id="@+id/wiek"
-            android:layout_width="match_parent"
-            android:layout_height="10px"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="number" />
-
-        <TextView
             android:id="@+id/textwysokosc"
             android:layout_width="match_parent"
             android:layout_height="0px"
