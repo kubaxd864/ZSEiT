@@ -2,8 +2,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle();
-        rectangle.Rectangle();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Witaj co chcesz dziś Obliczyć?");
+        System.out.println("1. Pole Prostokąta");
+        System.out.println("2. Sprawdzić czy punkt znajduje się w okręgu");
+        String Option = scanner.nextLine();
+        if (Option.equals("Pole Prostokąta") || Option.equals("1")){
+            Rectangle rectangle = new Rectangle();
+            rectangle.Rectangle();
+        }
+        else if (Option.equals("Sprawdzić czy punkt znajduje się w okręgu") || Option.equals("2")){
+            Circle circle = new Circle();
+            circle.Circle();
+        }
+        else {
+            System.out.println("Wybrano Niedostępną Opcję");
+        }
     }
 }
 
@@ -24,7 +40,12 @@ class Point {
 }
 
 class Rectangle {
+    private double AB;
+    private double BC;
+    private double Pole;
+
     public void Rectangle() {
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Podaj współrzędne punktu A:");
@@ -55,7 +76,10 @@ class Rectangle {
         double yD = scanner.nextDouble();
         Point d = new Point(xD, yD);
 
-        System.out.println("Współrzędne punktu D to: (" + d.getX() + ", " + d.getY() + ")");
+        AB = Math.sqrt(Math.pow((b.getX() - a.getX()), 2) + Math.pow((b.getY() - a.getY()), 2));
+        BC = Math.sqrt(Math.pow((c.getX() - b.getX()), 2) + Math.pow((c.getY() - b.getY()), 2));
+        Pole = BC * AB;
+        System.out.println("Pole Danego Prostokąta wynosi: " + Pole);
 
         scanner.close();
     }
@@ -67,7 +91,7 @@ class Circle {
         private double B;
         private double r;
 
-        Circle(double A, double B, double r) {
+        public void Circle() {
 
             Scanner scanner = new Scanner(System.in);
 
