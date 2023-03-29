@@ -6,9 +6,8 @@ public class Circle {
     private double r;
     private double x;
     private double y;
-    private double odleglosc;
 
-    public void Circle() {
+    public Circle Circle() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -17,29 +16,27 @@ public class Circle {
         x = scanner.nextDouble();
         System.out.print("y:");
         y = scanner.nextDouble();
+        Point a = new Point(x,y);
 
         System.out.println("Podaj Środek Okręgu (X, Y):");
         System.out.print("A:");
         A = scanner.nextDouble();
         System.out.print("B:");
         B = scanner.nextDouble();
+        Point S = new Point(A, B);
         System.out.println("Podaj promień okręgu:");
         System.out.print("r:");
         r = scanner.nextDouble();
-
-        odleglosc = Math.sqrt(Math.pow(x - A, 2) + Math.pow(y - B, 2));
-
-        if (odleglosc < r) {
-            System.out.println("Punkt (" + x + ", " + y + ") leży wewnątrz okręgu o promieniu " + r);
-        } else if (odleglosc == r) {
-            System.out.println("Punkt (" + x + ", " + y + ") leży na okręgu o promieniu " + r);
-        } else {
-            System.out.println("Punkt (" + x + ", " + y + ") leży poza okręgiem o promieniu " + r);
-        }
-
-        this.A = A;
-        this.B = B;
-        this.r = r;
-
+        Calculator calculator = new Calculator();
+        calculator.CalculateCircle(a, S);
+        return null;
     }
+    public double getR() {
+        return r;
+    }
+
+    public void setR(double r) {
+        this.r = r;
+    }
+
 }
