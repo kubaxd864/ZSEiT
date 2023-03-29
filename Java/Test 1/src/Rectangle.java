@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
 public class Rectangle {
-    private double AB;
-    private double BC;
-    private double Pole;
-
     public void Rectangle() {
 
         Scanner scanner = new Scanner(System.in);
@@ -36,11 +32,8 @@ public class Rectangle {
         System.out.print("y:");
         double yD = scanner.nextDouble();
         Point d = new Point(xD, yD);
-
-        AB = Math.sqrt(Math.pow((b.getX() - a.getX()), 2) + Math.pow((b.getY() - a.getY()), 2));
-        BC = Math.sqrt(Math.pow((c.getX() - b.getX()), 2) + Math.pow((c.getY() - b.getY()), 2));
-        Pole = BC * AB;
-        System.out.println("Pole Danego Prostokąta wynosi: " + Pole);
+        Calculator calculator2 = new Calculator();
+        calculator2.CalculateRectangle(a, b, c);
 
         scanner.close();
     }

@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Circle {
     private double A;
     private double B;
-    private double r;
+    private static double r;
     private double x;
     private double y;
 
@@ -27,16 +27,12 @@ public class Circle {
         System.out.println("Podaj promień okręgu:");
         System.out.print("r:");
         r = scanner.nextDouble();
-        Calculator calculator = new Calculator();
-        calculator.CalculateCircle(a, S);
+        Calculator calculator1 = new Calculator();
+        calculator1.CalculateCircle(a, S);
         return null;
     }
-    public double getR() {
+
+    public static double getR() {
         return r;
     }
-
-    public void setR(double r) {
-        this.r = r;
-    }
-
 }
