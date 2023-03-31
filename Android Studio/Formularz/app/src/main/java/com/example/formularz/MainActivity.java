@@ -5,43 +5,50 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+{
     private DatePickerDialog datePickerDialog;
-    private Button datebutton;
+    private Button dateButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initDatePicker();
-        datebutton = findViewById(R.id.datepicker);
-        datebutton.setText(getTodaysDate());
+        dateButton = findViewById(R.id.datepicker);
+        dateButton.setText(getTodaysDate());
+        Spinner spinner = findViewById(R.id.my_spinner);
+        String selectedItem = spinner.getSelectedItem().toString();
     }
 
-    private String getTodaysDate(){
-
+    private String getTodaysDate()
+    {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         month = month + 1;
         int day = cal.get(Calendar.DAY_OF_MONTH);
         return makeDateString(day, month, year);
-
     }
 
-    private void initDatePicker(){
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+    private void initDatePicker()
+    {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
+        {
             @Override
-            public void onDateSet(DatePicker view, int year, int month, int day) {
+            public void onDateSet(DatePicker datePicker, int year, int month, int day)
+            {
                 month = month + 1;
                 String date = makeDateString(day, month, year);
-                datebutton.setText(date);
+                dateButton.setText(date);
             }
         };
 
@@ -53,40 +60,48 @@ public class MainActivity extends AppCompatActivity {
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
     }
 
-    private String makeDateString(int day, int month, int year){
+    private String makeDateString(int day, int month, int year)
+    {
         return getMonthFormat(month) + " " + day + " " + year;
     }
 
-    private String getMonthFormat(int month){
+    private String getMonthFormat(int month)
+    {
         if(month == 1)
-            return "STYCZEŃ";
+            return "JAN";
         if(month == 2)
-            return "LUTY";
+            return "FEB";
         if(month == 3)
-            return "MARZEC";
+            return "MAR";
         if(month == 4)
-            return "KWIECIEŃ";
+            return "APR";
         if(month == 5)
-            return "MAJ";
+            return "MAY";
         if(month == 6)
-            return "CZERWIEC";
+            return "JUN";
         if(month == 7)
-            return "LIPIEC";
+            return "JUL";
         if(month == 8)
-            return "SIERPIEŃ";
+            return "AUG";
         if(month == 9)
-            return "WRZESIEŃ";
+            return "SEP";
         if(month == 10)
-            return "PAŹDZIERNIK";
+            return "OCT";
         if(month == 11)
-            return "LISTOPAD";
+            return "NOV";
         if(month == 12)
-            return "GRUDZIEŃ";
+            return "DEC";
 
+        //default should never happen
+        return "JAN";
+    }
 
-        return "STYCZEŃ";
-    };
+    public void openDatePicker(View view)
+    {
+        datePickerDialog.show();
+    }
 }

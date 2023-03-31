@@ -23,6 +23,7 @@
                 android:gravity="center"
                 android:layout_height="200px"
                 android:text="Formularz Rekrutacji"
+                android:textColor="@color/black"
                 android:layout_marginLeft="40px"
                 android:textSize="30dp" />
 
@@ -36,23 +37,29 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/black"
+            app:boxBackgroundMode="none">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:hint="Wprowadź Imię" />
+                android:paddingTop="30px"
+                android:hint="Imię:" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                app:boxBackgroundMode="none">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
-                    android:hint="Wprowadź Nazwisko" />
+                    android:paddingTop="30px"
+                    android:hint="Nazwisko:" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,17 +74,19 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="170dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10px"
-                android:layout_marginLeft="45px"
-                android:text="Wybierz Płeć"
-                android:textSize="20dp" />
+                android:layout_marginLeft="35px"
+                android:text="Płeć:"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
 
             <CheckBox
                 android:id="@+id/checkBox1"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:buttonTint="@color/black"
                 android:text="M" />
 
             <CheckBox
@@ -85,6 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20px"
+                android:buttonTint="@color/black"
                 android:text="K" />
 
         </LinearLayout>
@@ -99,10 +109,11 @@
                 android:id="@+id/textView3"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="45px"
+                android:layout_marginLeft="35px"
                 android:layout_marginTop="10px"
-                android:text="Podaj Datę Urodzenia"
-                android:textSize="20dp" />
+                android:text="Data Urodzenia:"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
 
             <Button
                 android:id="@+id/datepicker"
@@ -112,9 +123,120 @@
                 android:layout_marginLeft="30px"
                 android:textColor="@color/black"
                 android:textSize="17dp"
-                style="?android:spinnerStyle"/>
+                style="?android:spinnerStyle"
+                android:onClick="openDatePicker"/>
 
         </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/black"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="30px"
+                android:hint="E-Mail:" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/black"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:padding="30px"
+                android:hint="Adres Zamieszkania:" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:layout_marginTop="30px"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="35px"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:text="Województwo:" />
+
+            <Spinner
+                android:id="@+id/my_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="120px"
+                android:paddingLeft="30px"
+                android:layout_marginLeft="170px"
+                android:layout_gravity="center"
+                android:entries="@array/list" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180px"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150px"
+                android:textColorHint="@color/black"
+                android:padding="0px"
+                app:boxBackgroundMode="none">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="540px"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:hint="Kod Pocztowy:"
+                    android:paddingTop="30px" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                app:boxBackgroundMode="none">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="535px"
+                    android:layout_height="150px"
+                    android:backgroundTint="@color/white"
+                    android:hint="Miasto:"
+                    android:paddingTop="30px" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/textArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="42px"
+            android:paddingLeft="18px"
+            android:layout_marginTop="30px"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:minLines="3"
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:text="Opisz Swoje Doświadczenie w Zakresie Programowania"/>
 
     </LinearLayout>
 
