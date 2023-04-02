@@ -17,6 +17,19 @@
             android:layout_height="200px"
             android:orientation="horizontal">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/menuButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40px"
+                android:clickable="true"
+                app:fabCustomSize="50dp"
+                app:fabSize="normal"
+                app:maxImageSize="50dp"
+                app:srcCompat="@drawable/ic_back"
+                android:layout_marginRight="20dp"/>
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -24,15 +37,8 @@
                 android:layout_height="200px"
                 android:text="Formularz Rekrutacji"
                 android:textColor="@color/black"
-                android:layout_marginLeft="40px"
                 android:textSize="30dp" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="200px"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80px"
-                app:srcCompat="@drawable/xd" />
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -87,7 +93,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:buttonTint="@color/black"
-                android:text="M" />
+                android:text="M"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
@@ -95,7 +102,8 @@
                 android:layout_height="35dp"
                 android:layout_marginLeft="20px"
                 android:buttonTint="@color/black"
-                android:text="K" />
+                android:text="K"
+                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         </LinearLayout>
 
@@ -178,10 +186,11 @@
                 android:id="@+id/my_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="120px"
-                android:paddingLeft="30px"
-                android:layout_marginLeft="170px"
                 android:layout_gravity="center"
-                android:entries="@array/list" />
+                android:layout_marginLeft="170px"
+                android:entries="@array/list"
+                android:paddingLeft="30px"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
 
@@ -228,7 +237,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="42px"
-            android:paddingLeft="18px"
+            android:paddingLeft="38px"
             android:layout_marginTop="30px"
             android:gravity="top"
             android:inputType="textMultiLine"
@@ -236,7 +245,17 @@
             android:minLines="3"
             android:maxLines="10"
             android:scrollbars="vertical"
-            android:text="Opisz Swoje Doświadczenie w Zakresie Programowania"/>
+            android:text="Podaj Marki Samochodów Które Cię Interesują:"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40px"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:textColor="@color/black"
+            android:text="Zarejestruj Się" />
 
     </LinearLayout>
 

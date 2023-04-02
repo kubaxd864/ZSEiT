@@ -1,18 +1,20 @@
-package com.example.formularz;
+package com.example.grafik;
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
+        import android.app.AlertDialog;
+        import android.app.DatePickerDialog;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.DatePicker;
+        import android.widget.Spinner;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.Spinner;
+        import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Calendar;
+        import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity
+public class Page1 extends AppCompatActivity implements View.OnClickListener
 {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
@@ -23,10 +25,22 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initDatePicker();
+        getSupportActionBar().hide();
         dateButton = findViewById(R.id.datepicker);
         dateButton.setText(getTodaysDate());
         Spinner spinner = findViewById(R.id.my_spinner);
         String selectedItem = spinner.getSelectedItem().toString();
+        ((FloatingActionButton) findViewById(R.id.menuButton)).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.menuButton:
+                Intent myIntent = new Intent(this, MainActivity.class);
+                startActivity(myIntent);
+                break;
+        }
     }
 
     private String getTodaysDate()

@@ -1,4 +1,4 @@
-package com.example.formularz;
+package com.example.grafik;
 
 import org.junit.Test;
 
