@@ -5,12 +5,16 @@ package com.example.grafik;
         import android.app.DatePickerDialog;
         import android.content.Intent;
         import android.os.Bundle;
+        import android.provider.Settings;
         import android.view.View;
         import android.widget.Button;
+        import android.widget.CheckBox;
         import android.widget.DatePicker;
         import android.widget.Spinner;
 
         import com.google.android.material.floatingactionbutton.FloatingActionButton;
+        import com.google.android.material.textfield.TextInputEditText;
+        import com.google.android.material.textfield.TextInputLayout;
 
         import java.util.Calendar;
 
@@ -18,6 +22,7 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
 {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
+    private int Date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,9 +33,12 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
         getSupportActionBar().hide();
         dateButton = findViewById(R.id.datepicker);
         dateButton.setText(getTodaysDate());
-        Spinner spinner = findViewById(R.id.my_spinner);
+        TextInputLayout textInputLayout = findViewById(R.id.name);
+        String text = String.valueOf(textInputLayout.getEditText().getText());
+        Spinner spinner = findViewById(R.id.state);
         String selectedItem = spinner.getSelectedItem().toString();
         ((FloatingActionButton) findViewById(R.id.menuButton)).setOnClickListener(this);
+        ((Button) findViewById(R.id.register)).setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +48,23 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
                 Intent myIntent = new Intent(this, MainActivity.class);
                 startActivity(myIntent);
                 break;
+
+            case R.id.register:
+                TextInputLayout Name = findViewById(R.id.name);
+                String name = String.valueOf(Name.getEditText().getText());
+                TextInputLayout SurName = findViewById(R.id.name);
+                String surname = String.valueOf(SurName.getEditText().getText());
+                CheckBox men = (CheckBox)findViewById(R.id.gender_men);
+                CheckBox women = (CheckBox)findViewById(R.id.gender_women);
+                if(men.isChecked()){
+                    String gender = "Men";
+                    dateButton.setText("Men");
+                }
+                else if(women.isChecked()){
+                    String gender = "Women";
+                    dateButton.setText("Women");
+                }
+
         }
     }
 
@@ -62,6 +87,7 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
             {
                 month = month + 1;
                 String date = makeDateString(day, month, year);
+                Settings.Global. = date;
                 dateButton.setText(date);
             }
         };
@@ -74,7 +100,6 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
 
     }
 
