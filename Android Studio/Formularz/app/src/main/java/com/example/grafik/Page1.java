@@ -27,11 +27,12 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     private String date;
-    private Integer id = 1;
+    private Integer id = 0;
     private String name;
     private String surname;
     private String gender;
-    private String Date;
+    private String email;
+    private String address;
     private String state;
     private String postcode;
     private String city;
@@ -53,6 +54,9 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
         String selectedItem = spinner.getSelectedItem().toString();
         ((FloatingActionButton) findViewById(R.id.menuButton)).setOnClickListener(this);
         ((Button) findViewById(R.id.register)).setOnClickListener(this);
+        db = openOrCreateDatabase("BazaTestowa", MODE_PRIVATE, null);
+        String sqlDB = "CREATE TABLE IF NOT EXISTS KLIENCI2 (Id INTEGER, Name VARCHAR, Surname VARCHAR, Gender VARCHAR, Date VARCHAR, Email VARCHAR, Address VARCHAR, State VARCHAR, PostCode VARCHAR, City VARCHAR, Text VARCHAR)";
+        db.execSQL(sqlDB);
     }
 
     @Override
@@ -66,7 +70,7 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
             case R.id.register:
                 TextInputLayout Name = findViewById(R.id.name);
                 name = String.valueOf(Name.getEditText().getText());
-                TextInputLayout SurName = findViewById(R.id.name);
+                TextInputLayout SurName = findViewById(R.id.surname);
                 surname = String.valueOf(SurName.getEditText().getText());
                 CheckBox men = (CheckBox)findViewById(R.id.gender_men);
                 CheckBox women = (CheckBox)findViewById(R.id.gender_women);
@@ -76,45 +80,38 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
                 else if(women.isChecked()){
                     gender = "Kobieta";
                 }
-                Date = date;
+                TextInputLayout Email = findViewById(R.id.email);
+                email = String.valueOf(Email.getEditText().getText());
+                TextInputLayout Address = findViewById(R.id.address);
+                address = String.valueOf(Address.getEditText().getText());
                 Spinner mySpinner = (Spinner) findViewById(R.id.state);
                 state = mySpinner.getSelectedItem().toString();
                 TextInputLayout PostCode = findViewById(R.id.postcode);
-                postcode = String.valueOf(Name.getEditText().getText());
+                postcode = String.valueOf(PostCode.getEditText().getText());
                 TextInputLayout City = findViewById(R.id.city);
-                city = String.valueOf(SurName.getEditText().getText());
+                city = String.valueOf(City.getEditText().getText());
                 EditText TextArea = findViewById(R.id.textArea);
                 text = String.valueOf(TextArea.getText());
-                Datebase();
+                addToDatebase();
         }
     }
 
-    public void Datebase(){
+    public void addToDatebase(){
         id++;
-        db = openOrCreateDatabase("Test", MODE_PRIVATE, null);
-        String sqlDB = "CREATE TABLE IF NOT EXISTS KLIENCI (Id INTEGER, Name VARCHAR, Surname VARCHAR, Gender VARCHAR, State VARCHAR, PostCode VARCHAR, City VARCHAR, Text VARCHAR)";
-        db.execSQL(sqlDB);
-        String sqlCount = "SELECT count(*) FROM STUDENCI";
-        Cursor cursor = db.rawQuery(sqlCount, null);
-        cursor.moveToFirst();
-        int ilosc = cursor.getInt(0);
-        cursor.close();
-        if (ilosc == 0) {
-            String sqlStudent = "INSERT INTO STUDENCI VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            SQLiteStatement statement = db.compileStatement(sqlStudent);
-
-            statement.bindLong(1, id);
-            statement.bindString(2, name);
-            statement.bindString(3, surname);
-            statement.bindString(4, gender);
-            statement.bindString(5, state);
-            statement.bindString(6, postcode);
-            statement.bindString(7, city);
-            statement.bindString(8, text);
-            statement.executeInsert();
-        }
-
-
+        String sqlStudent = "INSERT INTO KLIENCI2 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        SQLiteStatement statement = db.compileStatement(sqlStudent);
+        statement.bindLong(1, id);
+        statement.bindString(2, name);
+        statement.bindString(3, surname);
+        statement.bindString(4, gender);
+        statement.bindString(5, date);
+        statement.bindString(6, email);
+        statement.bindString(7, address);
+        statement.bindString(8, state);
+        statement.bindString(9, postcode);
+        statement.bindString(10, city);
+        statement.bindString(11, text);
+        statement.executeInsert();
     }
 
     private String getTodaysDate()
