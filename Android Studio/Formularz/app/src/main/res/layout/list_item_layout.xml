@@ -14,7 +14,7 @@
         android:padding="10dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/deletebutton"
         android:layout_width="150px"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"

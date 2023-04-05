@@ -2,6 +2,7 @@ package com.example.grafik;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ import java.util.Set;
 
 
 public class Page2 extends AppCompatActivity implements View.OnClickListener  {
+    private Integer id;
     ListView days = null;
     Set<String> dates = new HashSet<String>();
     ArrayList<String> dates2 = new ArrayList<String>();
@@ -41,7 +44,7 @@ public class Page2 extends AppCompatActivity implements View.OnClickListener  {
         Cursor c = db.rawQuery("SELECT * FROM KLIENCI2", null);
         if (c.moveToFirst()) {
             do {
-                int id = c.getInt(c.getColumnIndex("Id"));
+                id = c.getInt(c.getColumnIndex("Id"));
                 String name = c.getString(c.getColumnIndex("Name"));
                 String surname = c.getString(c.getColumnIndex("Surname"));
                 String gender = c.getString(c.getColumnIndex("Gender"));
@@ -63,7 +66,7 @@ public class Page2 extends AppCompatActivity implements View.OnClickListener  {
                 View view = super.getView(position, convertView, parent);
 
                 TextView textView = view.findViewById(R.id.textView);
-                Button button = view.findViewById(R.id.button);
+                Button button = view.findViewById(R.id.deletebutton);
 
                 String item = getItem(position);
                 textView.setText(item);
@@ -71,7 +74,11 @@ public class Page2 extends AppCompatActivity implements View.OnClickListener  {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Do something when the button is clicked
+                        Context context = getApplicationContext();
+                        CharSequence text = "Hello toast! " + id;
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast.makeText(context, text, duration).show();
                     }
                 });
 

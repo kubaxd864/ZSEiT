@@ -3,6 +3,7 @@ package com.example.grafik;
         import androidx.appcompat.app.AppCompatActivity;
         import android.app.AlertDialog;
         import android.app.DatePickerDialog;
+        import android.content.Context;
         import android.content.Intent;
         import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +16,7 @@ package com.example.grafik;
         import android.widget.DatePicker;
         import android.widget.EditText;
         import android.widget.Spinner;
+        import android.widget.Toast;
 
         import com.google.android.material.floatingactionbutton.FloatingActionButton;
         import com.google.android.material.textfield.TextInputEditText;
@@ -27,7 +29,6 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     private String date;
-    private Integer id = 0;
     private String name;
     private String surname;
     private String gender;
@@ -97,10 +98,16 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
     }
 
     public void addToDatebase(){
-        id++;
+        String query = "SELECT COUNT(*) FROM KLIENCI2;";
+        Cursor cursor = db.rawQuery(query, null);
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+        }
+        cursor.close();
         String sqlStudent = "INSERT INTO KLIENCI2 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = db.compileStatement(sqlStudent);
-        statement.bindLong(1, id);
+        statement.bindLong(1, count + 1);
         statement.bindString(2, name);
         statement.bindString(3, surname);
         statement.bindString(4, gender);
