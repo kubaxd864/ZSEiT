@@ -57,6 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
+                    android:digits="aąbcćdeęfghijklłmnńoóprsśtuwyzźżAĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹwwŻ"
                     android:hint="Imię:"
                     android:paddingTop="30px" />
 
@@ -71,6 +72,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
+                        android:digits="aąbcćdeęfghijklłmnńoóprsśtuwyzźżAĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹwwŻ"
                         android:hint="Nazwisko:"
                         android:paddingTop="30px" />
 
@@ -173,6 +175,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
+                    android:digits="aąbcćdeęfghijklłmnńoóprsśtuwyzźżAĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹwwŻ0123456789/-_. "
                     android:hint="Adres Zamieszkania:"
                     android:padding="30px" />
 
@@ -224,6 +227,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
                         android:hint="Kod Pocztowy:"
+                        android:digits="0123456789-"
                         android:paddingTop="30px" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -240,6 +244,7 @@
                         android:layout_height="150px"
                         android:backgroundTint="@color/white"
                         android:hint="Miasto:"
+                        android:digits="aąbcćdeęfghijklłmnńoóprsśtuwyzźżAĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹwwŻ"
                         android:paddingTop="30px" />
 
                 </com.google.android.material.textfield.TextInputLayout>

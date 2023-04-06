@@ -10,6 +10,7 @@ package com.example.grafik;
         import android.database.sqlite.SQLiteStatement;
         import android.os.Bundle;
         import android.provider.Settings;
+        import android.text.TextUtils;
         import android.view.View;
         import android.widget.Button;
         import android.widget.CheckBox;
@@ -61,7 +62,8 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         switch (v.getId()) {
             case R.id.menuButton:
                 Intent myIntent = new Intent(this, MainActivity.class);
@@ -93,11 +95,27 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
                 city = String.valueOf(City.getEditText().getText());
                 EditText TextArea = findViewById(R.id.textArea);
                 text = String.valueOf(TextArea.getText());
-                addToDatebase();
+                formCheck();
+        }
+    }
+
+    public void formCheck()
+    {
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(surname) || TextUtils.isEmpty(gender) || TextUtils.isEmpty(email) || TextUtils.isEmpty(address) || TextUtils.isEmpty(state) || TextUtils.isEmpty(postcode) || TextUtils.isEmpty(city) || TextUtils.isEmpty(text)) {
+            Toast.makeText(getApplicationContext(), "Uzupełnij Formularz", Toast.LENGTH_LONG).show();
+        }
+        else if (!email.contains("@")){
+            Toast.makeText(getApplicationContext(), "Niepoprawny adres Email", Toast.LENGTH_LONG).show();
+        }
+        else if (!postcode.contains("-")){
+            Toast.makeText(getApplicationContext(), "Podaj Poprawny Kod Pocztowy", Toast.LENGTH_LONG).show();
+        } else {
+            addToDatebase();
         }
     }
 
     public void addToDatebase(){
+
         Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM KLIENCI2", null);
         cursor.moveToFirst();
         int count = cursor.getInt(0);
