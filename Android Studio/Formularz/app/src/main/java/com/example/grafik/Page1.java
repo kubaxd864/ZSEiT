@@ -98,19 +98,9 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
     }
 
     public void addToDatebase(){
-<<<<<<< HEAD
         Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM KLIENCI2", null);
         cursor.moveToFirst();
         int count = cursor.getInt(0);
-=======
-        String query = "SELECT COUNT(*) FROM KLIENCI2;";
-        Cursor cursor = db.rawQuery(query, null);
-        int count = 0;
-        if (cursor.moveToFirst()) {
-            count = cursor.getInt(0);
-        }
-        cursor.close();
->>>>>>> f0d870fa65f4ce9a7250bb3b26dfcbcb13f1ee71
         String sqlStudent = "INSERT INTO KLIENCI2 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = db.compileStatement(sqlStudent);
         statement.bindLong(1, count + 1);

@@ -151,11 +151,14 @@
                 app:boxBackgroundMode="none">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:hint="E-Mail:"
-                    android:paddingTop="30px" />
+                    android:paddingTop="30px"
+                    android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
