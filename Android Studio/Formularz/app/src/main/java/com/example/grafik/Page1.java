@@ -98,6 +98,11 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
     }
 
     public void addToDatebase(){
+<<<<<<< HEAD
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM KLIENCI2", null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+=======
         String query = "SELECT COUNT(*) FROM KLIENCI2;";
         Cursor cursor = db.rawQuery(query, null);
         int count = 0;
@@ -105,6 +110,7 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
             count = cursor.getInt(0);
         }
         cursor.close();
+>>>>>>> f0d870fa65f4ce9a7250bb3b26dfcbcb13f1ee71
         String sqlStudent = "INSERT INTO KLIENCI2 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = db.compileStatement(sqlStudent);
         statement.bindLong(1, count + 1);
@@ -119,6 +125,7 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
         statement.bindString(10, city);
         statement.bindString(11, text);
         statement.executeInsert();
+        Toast.makeText(getApplicationContext(), "Dodano Klienta Do Bazy", Toast.LENGTH_LONG).show();
     }
 
     private String getTodaysDate()
@@ -151,6 +158,7 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
 
     }
 

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Grafik</string>
+    <string name="Home_page">Home Page</string>
+    <string name="Register">Register</string>
+    <string name="View_Clients">View Clients</string>
+    <string-array name="list">
+        <item>Dolnośląskie</item>
+        <item>Kujawsko-Pomorskie</item>
+        <item>Lubelskie</item>
+        <item>Lubuskie</item>
+        <item>Łódzkie</item>
+        <item>Małopolskie</item>
+        <item>Mazowieckie</item>
+        <item>Opolskie</item>
+        <item>Podkarpackie</item>
+        <item>Podlaskie</item>
+        <item>Pomorskie</item>
+        <item>Śląskie</item>
+        <item>Świętokrzyskie</item>
+        <item>Warmińsko-Mazurskie</item>
+        <item>Wielkopolskie</item>
+        <item>Zachodniopomorskie</item>
+    </string-array>
+</resources>

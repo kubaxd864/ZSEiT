@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homePage"
+        android:icon="@drawable/ic_home"
+        android:title="@string/Home_page" />
+
+    <item
+        android:id="@+id/register"
+        android:icon="@drawable/ic__registration"
+        android:title="@string/Register" />
+
+    <item
+        android:id="@+id/viewClients"
+        android:icon="@drawable/ic_clients"
+        android:title="@string/View_Clients" />
+
+</menu>

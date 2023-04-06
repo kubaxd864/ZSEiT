@@ -36,8 +36,18 @@ public class Page2 extends AppCompatActivity implements View.OnClickListener  {
         setContentView(R.layout.page_2);
         getSupportActionBar().hide();
         ((FloatingActionButton) findViewById(R.id.menuButton)).setOnClickListener(this);
+        ((Button) findViewById(R.id.button)).setOnClickListener(this);
     }
 
+<<<<<<< HEAD
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.menuButton:
+                Intent myIntent = new Intent(this, MainActivity.class);
+                startActivity(myIntent);
+                break;
+=======
     public void onClick(View view) {
         SQLiteDatabase db = openOrCreateDatabase("BazaTestowa", MODE_PRIVATE, null);
         List<String> wyniki = new ArrayList<String>();
@@ -58,19 +68,64 @@ public class Page2 extends AppCompatActivity implements View.OnClickListener  {
                 wyniki.add(" Id: " + id + "\n" + " Name: " + name + "\n" + " Surname: " + surname + "\n" + " Gender: " + gender + "\n" + " Date: " + date + "\n" + " Email: " + email + "\n" + " Address: " + address + "\n" + " State: " + state + "\n" + " PostCode: " + postcode + "\n" + " City: " + city + "\n" + " Text: " + text);
             } while (c.moveToNext());
         }
+>>>>>>> f0d870fa65f4ce9a7250bb3b26dfcbcb13f1ee71
 
-        ListView listView = (ListView) findViewById(R.id.listView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_layout, R.id.textView, wyniki) {
+            case R.id.button:
+                SQLiteDatabase db = openOrCreateDatabase("BazaTestowa", MODE_PRIVATE, null);
+                List<String> wyniki = new ArrayList<String>();
+                Cursor c = db.rawQuery("SELECT * FROM KLIENCI2", null);
+                if (c.moveToFirst()) {
+                    do {
+                        int id = c.getInt(c.getColumnIndex("Id"));
+                        String name = c.getString(c.getColumnIndex("Name"));
+                        String surname = c.getString(c.getColumnIndex("Surname"));
+                        String gender = c.getString(c.getColumnIndex("Gender"));
+                        String date = c.getString(c.getColumnIndex("Date"));
+                        String email = c.getString(c.getColumnIndex("Email"));
+                        String address = c.getString(c.getColumnIndex("Address"));
+                        String state = c.getString(c.getColumnIndex("State"));
+                        String postcode = c.getString(c.getColumnIndex("PostCode"));
+                        String city = c.getString(c.getColumnIndex("City"));
+                        String text = c.getString(c.getColumnIndex("Text"));
+                        wyniki.add(" Id: " + id + "\n" + " Name: " + name + "\n" + " Surname: " + surname + "\n" + " Gender: " + gender + "\n" + " Date: " + date + "\n" + " Email: " + email + "\n" + " Address: " + address + "\n" + " State: " + state + "\n" + " PostCode: " + postcode + "\n" + " City: " + city + "\n" + " Text: " + text);
+                    } while (c.moveToNext());
+                }
 
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
+                ListView listView = (ListView) findViewById(R.id.listView);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_layout, R.id.textView, wyniki) {
 
+<<<<<<< HEAD
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View view = super.getView(position, convertView, parent);
+=======
                 TextView textView = view.findViewById(R.id.textView);
                 Button button = view.findViewById(R.id.deletebutton);
+>>>>>>> f0d870fa65f4ce9a7250bb3b26dfcbcb13f1ee71
 
-                String item = getItem(position);
-                textView.setText(item);
+                        TextView textView = view.findViewById(R.id.textView);
+                        Button button = view.findViewById(R.id.button);
 
+<<<<<<< HEAD
+                        String item = getItem(position);
+                        textView.setText(item);
+
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Cursor c = db.rawQuery("SELECT Id FROM KLIENCI2 LIMIT 1 OFFSET " + position, null);
+                                c.moveToFirst();
+                                int id = c.getInt(c.getColumnIndex("Id"));
+                                c.close();
+
+                                db.delete("KLIENCI2", "Id=" + id, null);
+
+                                wyniki.remove(position);
+                                notifyDataSetChanged();
+                                Toast.makeText(getApplicationContext(), "Usunięto Klienta Z Bazy", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        return view;
+=======
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -79,23 +134,11 @@ public class Page2 extends AppCompatActivity implements View.OnClickListener  {
                         int duration = Toast.LENGTH_SHORT;
 
                         Toast.makeText(context, text, duration).show();
+>>>>>>> f0d870fa65f4ce9a7250bb3b26dfcbcb13f1ee71
                     }
-                });
-
-                return view;
-            }
-        };
-        listView.setAdapter(adapter);
-        c.close();
+                };
+                listView.setAdapter(adapter);
+                c.close();
+        }
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.menuButton:
-//                Intent myIntent = new Intent(this, MainActivity.class);
-//                startActivity(myIntent);
-//                break;
-//        }
-//    }
 }
