@@ -1,6 +1,6 @@
 public class Cabrio {
-    private boolean isRoofOpen;
-    private boolean isDriving;
+    boolean isRoofOpen;
+    boolean isDriving;
 
     public Cabrio(String model, String manufacturer) {
         isRoofOpen = false;
