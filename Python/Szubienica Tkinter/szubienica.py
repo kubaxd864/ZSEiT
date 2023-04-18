@@ -1,58 +1,55 @@
 import random
 
-# maxymalna liczba bledow jest o 1 mniejsza niz liczba rysunkow
-MAX_WRONG = len(HANGMAN) - 1
-# stala slowa
-WORDS = ["GRACZ","ZIOM","MARTIN","DUPEK","NADZIEJA","TRAKTORZYSTA"]
+MAX_WRONG = 8
+WORDS = ["JABŁKO", "KOMPUTER", "KOT", "SŁONIE", "KRAKÓW", "SAMOCHOD", "LEKCJA", "KSIĄŻKA", "DZIEŃ", "NOC", "KOSZULKA", "KOSZMAR", "KOSZ", "KOSZT", "KOSZTY"]
 
-word = random.choice(WORDS) # slowo do odgadniecia 
+word = random.choice(WORDS)  
+so_far = "-" * len(word)
+wrong = 0
+uzyte = []
 
+print("Witaj w grze szubienica")
+print("Wybierz Opcję: ")
+print("1. Graj")
+print("2. Wyjście")
+menu = input()
 
-so_far = "-" * len(word)      # kreska zastępuje nieodgadniętą literę
+if(menu == "1" or menu == "Graj" or menu == "graj"):
+	while wrong < MAX_WRONG and so_far != word:
+		print("Wykorzystane Litery:", uzyte)
+		print("Hasło to:", so_far)
 
-wrong = 0 # liczba nietrafionych liter 
-
-uzyte = [] # slowa juz uzyte w grze
-
-print("Witam w grze szubienica")
-
-while wrong < MAX_WRONG and so_far != word:
-	print(HANGMAN[wrong])
-	print("\nWykorzystałeś już następujące litery:\n", uzyte)
-	print("\nNa razie zagadkowe słowo wygląda tak:\n", so_far)
-
-	guess = input("\n\nWprowadź literę: ")
-	guess = guess.upper()
-    
-	while guess in uzyte:
-		print("Już wykorzystałeś literę", guess)
-		guess = input("Wprowadź literę: ")
+		guess = input("Podaj Literę literę: ")
 		guess = guess.upper()
+		
+		while guess in uzyte:
+			print("Już wykorzystałeś literę", guess)
+			guess = input("Wprowadź literę: ")
+			guess = guess.upper()
 
-	uzyte.append(guess)
+		uzyte.append(guess)
 
-	if guess in word:
-		print("\nTak!", guess, "znajduje się w zagadkowym słowie!")
+		if guess in word:
+			
+			new = ""
+			for i in range(len(word)):
+				if guess == word[i]:
+					new += guess
+				else:
+					new += so_far[i]              
+			so_far = new
+		else:
+			print("Podana litera nie występuje w tym słowie")
+			wrong += 1
 
-        # utwórz nową wersję zmiennej so_far, aby zawierała odgadniętą literę
-		new = ""
-		for i in range(len(word)):
-			if guess == word[i]:
-				new += guess
-			else:
-				new += so_far[i]              
-		so_far = new
+
+	if wrong == MAX_WRONG:
+		print("Przegrałeś!")
 	else:
-		print("\nNiestety literka nie wystepuje w slowie")
-		wrong += 1
+		print("Gratulacje!")
+		
+	print("Hasłem było", word)
+	
 
-
-if wrong == MAX_WRONG:
-    print(HANGMAN[wrong])
-    print("\nZostałeś powieszony!")
-else:
-    print("\nOdgadłeś!")
-    
-print("\nZagadkowe słowo to", word)
-
-input("\n\nAby zakończyć program, naciśnij klawisz Enter.")
+elif(menu == "2" or menu == "Wyjście" or menu == "wyjście"):
+	print("Wyjście")
