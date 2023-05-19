@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const App = () => {
@@ -7,16 +7,29 @@ const App = () => {
   const [message, setMessage] = useState('');
   const [count, setCount] = useState(10);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    handleChange()
+  }, []);
+
+  const handleChange = (e) => {
+    alert(count)
     setRandomNumber(Math.floor(Math.random() * count));
-    if (randomNumber == number) {
-      setMessage('Gratulacje! Zgadłeś liczbę!');
-    } else if (randomNumber < number) {
-      setMessage('Za dużo! Spróbuj jeszcze raz!');
-    } else if (randomNumber > number) {
-      setMessage('Za mało! Spróbuj jeszcze raz!');
+  };
+
+  const handleSubmit = (e) => {
+    if( document.getElementById('playbtn').innerHTML == 'Zagraj ponownie!') {
+      window.location.reload();
     } else {
-      setMessage('Wprowadź liczbę!');
+      if (randomNumber == number) {
+        setMessage('Gratulacje! Zgadłeś liczbę!' + randomNumber);
+        document.getElementById('playbtn').innerHTML = 'Zagraj ponownie!';
+      } else if (randomNumber < number) {
+        setMessage('Za dużo! Spróbuj jeszcze raz!' + randomNumber);
+      } else if (randomNumber > number) {
+        setMessage('Za mało! Spróbuj jeszcze raz!'  + randomNumber);
+      } else {
+        setMessage('Wprowadź liczbę!');
+      }
     }
   };
 
@@ -25,7 +38,7 @@ const App = () => {
       <div className='container'>
         <h1>Zgadnij Randomową Liczbę !</h1>
         <h3 className='Info'>Wybierz zakres liczb</h3>
-        <select value={count} onChange={e=>setCount(e.target.value)}>
+        <select value={count} onChange={e => {setCount(e.target.value); handleChange()}}>
           <option className='Word_count' value="10">Do 1 do 10</option>
           <option className='Word_count' value="100">Do 1 do 100</option>
           <option className='Word_count' value="1000">Do 1 do 1000</option>
@@ -34,7 +47,7 @@ const App = () => {
         </select>
         <h3 className='Info'>Wprowadź Liczbę</h3>
         <input type="number" className='Input_Number' onChange={e => setNumber(e.target.value)} />
-        <button type="submit" className='Pick' onClick={e => handleSubmit(e.target.value)}>Graj!</button>
+        <button type="submit" className='Pick' id="playbtn" onClick={e => handleSubmit(e.target.value)}>Graj!</button>
         <h2>{message}</h2>
       </div>
     </div>
