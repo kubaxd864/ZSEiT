@@ -1,5 +1,7 @@
 package com.example.grafik;
 
+        import static java.sql.Types.NULL;
+
         import androidx.appcompat.app.AppCompatActivity;
         import android.app.AlertDialog;
         import android.app.DatePickerDialog;
@@ -50,14 +52,10 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
         getSupportActionBar().hide();
         dateButton = findViewById(R.id.datepicker);
         dateButton.setText(getTodaysDate());
-        TextInputLayout textInputLayout = findViewById(R.id.name);
-        String text = String.valueOf(textInputLayout.getEditText().getText());
-        Spinner spinner = findViewById(R.id.state);
-        String selectedItem = spinner.getSelectedItem().toString();
         ((FloatingActionButton) findViewById(R.id.menuButton)).setOnClickListener(this);
         ((Button) findViewById(R.id.register)).setOnClickListener(this);
         db = openOrCreateDatabase("BazaTestowa", MODE_PRIVATE, null);
-        String sqlDB = "CREATE TABLE IF NOT EXISTS KLIENCI2 (Id INTEGER, Name VARCHAR, Surname VARCHAR, Gender VARCHAR, Date VARCHAR, Email VARCHAR, Address VARCHAR, State VARCHAR, PostCode VARCHAR, City VARCHAR, Text VARCHAR)";
+        String sqlDB = "CREATE TABLE IF NOT EXISTS KLIENCI3 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCHAR, Surname VARCHAR, Gender VARCHAR, Date VARCHAR, Email VARCHAR, Address VARCHAR, State VARCHAR, PostCode VARCHAR, City VARCHAR, Text VARCHAR)";
         db.execSQL(sqlDB);
     }
 
@@ -115,13 +113,9 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
     }
 
     public void addToDatebase(){
-
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM KLIENCI2", null);
-        cursor.moveToFirst();
-        int count = cursor.getInt(0);
-        String sqlStudent = "INSERT INTO KLIENCI2 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sqlStudent = "INSERT INTO KLIENCI3 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = db.compileStatement(sqlStudent);
-        statement.bindLong(1, count + 1);
+        statement.bindLong(1, NULL);
         statement.bindString(2, name);
         statement.bindString(3, surname);
         statement.bindString(4, gender);
