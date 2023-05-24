@@ -112,20 +112,19 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    public void addToDatebase(){
-        String sqlStudent = "INSERT INTO KLIENCI3 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public void addToDatebase() {
+        String sqlStudent = "INSERT INTO KLIENCI3 (Name, Surname, Gender, Date, Email, Address, State, PostCode, City, Text) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = db.compileStatement(sqlStudent);
-        statement.bindLong(1, NULL);
-        statement.bindString(2, name);
-        statement.bindString(3, surname);
-        statement.bindString(4, gender);
-        statement.bindString(5, date);
-        statement.bindString(6, email);
-        statement.bindString(7, address);
-        statement.bindString(8, state);
-        statement.bindString(9, postcode);
-        statement.bindString(10, city);
-        statement.bindString(11, text);
+        statement.bindString(1, name);
+        statement.bindString(2, surname);
+        statement.bindString(3, gender);
+        statement.bindString(4, date);
+        statement.bindString(5, email);
+        statement.bindString(6, address);
+        statement.bindString(7, state);
+        statement.bindString(8, postcode);
+        statement.bindString(9, city);
+        statement.bindString(10, text);
         statement.executeInsert();
         Toast.makeText(getApplicationContext(), "Dodano Klienta Do Bazy", Toast.LENGTH_LONG).show();
     }
@@ -142,14 +141,9 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener
 
     private void initDatePicker()
     {
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
-        {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day)
-            {
-                date = makeDateString(day, month+1, year);
-                dateButton.setText(date);
-            }
+        DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
+            date = makeDateString(day, month+1, year);
+            dateButton.setText(date);
         };
 
         Calendar cal = Calendar.getInstance();
