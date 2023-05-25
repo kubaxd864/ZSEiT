@@ -7,6 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url(number_background.png);
   background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(105, 78, 35);
 }
 
 code {

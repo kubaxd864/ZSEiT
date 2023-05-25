@@ -9,10 +9,9 @@ const App = () => {
 
   useEffect(() => {
     handleChange()
-  }, []);
+  }, [count]);
 
   const handleChange = (e) => {
-    alert(count)
     setRandomNumber(Math.floor(Math.random() * count));
   };
 
@@ -21,12 +20,12 @@ const App = () => {
       window.location.reload();
     } else {
       if (randomNumber == number) {
-        setMessage('Gratulacje! Zgadłeś liczbę!' + randomNumber);
+        setMessage('Gratulacje! Zgadłeś liczbę!');
         document.getElementById('playbtn').innerHTML = 'Zagraj ponownie!';
       } else if (randomNumber < number) {
-        setMessage('Za dużo! Spróbuj jeszcze raz!' + randomNumber);
+        setMessage('Za dużo! Spróbuj jeszcze raz!');
       } else if (randomNumber > number) {
-        setMessage('Za mało! Spróbuj jeszcze raz!'  + randomNumber);
+        setMessage('Za mało! Spróbuj jeszcze raz!');
       } else {
         setMessage('Wprowadź liczbę!');
       }
