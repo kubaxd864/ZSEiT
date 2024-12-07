@@ -1,7 +1,13 @@
-<div align='center'>
+# Tasks from High School
 
-# ZSEiT
-***<p style="text-align: center;">All school assignments are in this Repository</p>***
-![school logo](ElektronikLogo.png)
+## Used Technologies:
 
-</div>
+- **HTML5**
+- **CSS3**
+- **React**
+- **Python**
+- **C++**
+- **Javascript**
+- **Java**
+
+<br/>
