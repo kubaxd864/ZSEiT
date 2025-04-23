@@ -1,4 +1,3 @@
-from distutils.log import error
 from stringprep import b1_set
 from tkinter import *
 import random

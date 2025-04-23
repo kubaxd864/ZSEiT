@@ -21,7 +21,7 @@ def clickedprocessing():
         turn = 2
         return "X"
     elif turn == 2:
-        turn = 1;
+        turn = 1
         return "O"
 
 
